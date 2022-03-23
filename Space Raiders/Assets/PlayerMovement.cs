@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     private float shipWidth;
 
     private Vector2 screenBounds;
+
+    public static bool estadoPausa = false;
+    public GameObject menuPausaUI;
 
     // Start is called before the first frame update
     void Start()
@@ -78,5 +82,42 @@ public class PlayerMovement : MonoBehaviour
         if(dashCooldownCounter>0){
             dashCooldownCounter -= Time.deltaTime;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (estadoPausa)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+    public void Resume()
+    {
+        menuPausaUI.SetActive(false);
+        Time.timeScale = 1f;
+        estadoPausa = false;
+    }
+
+    public void OptionsMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SalirJuego()
+    {
+        Debug.Log("Saliendo del juego...");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    void Pause()
+    {
+        menuPausaUI.SetActive(true);
+        Time.timeScale = 0f;
+        estadoPausa = true;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public void BotonInfinito(){
-        SceneManager.LoadScene("PlayerMovement");
+        SceneManager.LoadScene("nivel_infinito");
     }
 
     public void BotonHistoria(){
