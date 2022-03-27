@@ -6,6 +6,8 @@ public class AsteroidMovement : MonoBehaviour
 {
     private Rigidbody2D rig;
     private float velocity;
+    private int points = 10;
+
     public GameObject explotion;
 
     private void Awake()
@@ -25,6 +27,7 @@ public class AsteroidMovement : MonoBehaviour
     {
         if (this.gameObject.transform.position.y < -6)
         {
+            ScoreManager.instance.addPoints(points);
             Destroy(this.gameObject);
         }
     }
