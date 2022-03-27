@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MenuManager : MonoBehaviour
 {
+    public AudioSource clip;
+    
     public void BotonInfinito(){
         SceneManager.LoadScene("nivel_infinito");
     }
@@ -19,5 +22,9 @@ public class MenuManager : MonoBehaviour
 
     public void BotonSalir(){
         Application.Quit();
+    }
+
+    public void PlaySoundButton(){
+        clip.Play();
     }
 }
