@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
 
     //Cada nave tendra sus valores de velocidad
-    public static float baseSpeed = 500f;
+    public static float baseSpeed = 5f;
     public float activeSpeed = baseSpeed;
-    public float dashSpeed = 1000f;
+    public float dashSpeed = 10f;
     public float dashLength = 0.2f;
     public float dashCounter;
     public float dashCooldownCounter;
