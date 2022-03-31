@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,12 +14,12 @@ public class ScoreManager : MonoBehaviour
     /// <summary>
     /// Texto a proyectar de la puntuacion actual de la partida
     /// </summary>
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
 
     /// <summary>
     /// Texto a proyectar de la puntuacion mas alta de la partida
     /// </summary>
-    public Text bestScoreText;
+    public TextMeshProUGUI bestScoreText;
 
     /// <summary>
     /// Puntuacion actual de la partida
@@ -39,6 +40,8 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     private float gameDifficulty = 1;
 
+    private string test = "Test ";
+
     // Se ejecuta antes del Start()
     public void Awake()
     {
@@ -48,9 +51,10 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.GetInt("bestScoreStage" + gameStage.ToString());
-        scoreText.text = "Test Score: " + score.ToString();
-        bestScoreText.text = "Test Best: " + bestScore.ToString();
+        bestScore = PlayerPrefs.GetInt("bestScoreStage" + gameStage.ToString());
+
+        scoreText.text = test + "Score: " + score.ToString();
+        bestScoreText.text = test + "Best Score: " + bestScore.ToString();
     }
 
     /// <summary>
@@ -61,9 +65,11 @@ public class ScoreManager : MonoBehaviour
     public void selectStage(int stage)
     {
         gameStage = stage;
-        PlayerPrefs.GetInt("bestScoreStage" + gameStage.ToString());
+        bestScore = PlayerPrefs.GetInt("bestScoreStage" + gameStage.ToString());
+        if (stage > 0)
+            test = "";
         scoreText.text = "Score: " + score.ToString();
-        bestScoreText.text = "Best: " + bestScore.ToString();
+        bestScoreText.text = "Best Score: " + bestScore.ToString();
     }
 
     /// <summary>
@@ -74,10 +80,12 @@ public class ScoreManager : MonoBehaviour
     public void addPoints(int points)
     {
         score += points * (int)System.Math.Round(gameDifficulty, 0);
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = test + "Score: " + score.ToString();
 
         if (bestScore < score)
         {
+            bestScore = score;
+            bestScoreText.text = test + "Best Score: " + bestScore.ToString();
             PlayerPrefs.SetInt("bestScoreStage" + gameStage.ToString(), bestScore);
         }
     }
