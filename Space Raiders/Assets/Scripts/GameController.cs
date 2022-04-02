@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnWaves());
+        Debug.Log("Prefab Name: " + PlayerPrefs.GetString("ship"));
     }
 
     // Update is called once per frame

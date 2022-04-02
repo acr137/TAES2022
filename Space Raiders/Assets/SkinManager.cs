@@ -36,7 +36,17 @@ public class SkinManager : MonoBehaviour
 
     public void PlayGame()
     {
-        PrefabUtility.SaveAsPrefabAsset(playerskin, "Assets/Prefabs/Spaceship.prefab");
+        //PrefabUtility.SaveAsPrefabAsset(playerskin, "Assets/Prefabs/Spaceship.prefab");
+
+        switch (selectedSkin)
+        {
+            case 0:
+                PlayerPrefs.SetString("ship", "Frigate1");
+                break;
+            case 1:
+                PlayerPrefs.SetString("ship", "Spaceship");
+                break;
+        }
         SceneManager.LoadScene("nivel_infinito");
     }
 }
