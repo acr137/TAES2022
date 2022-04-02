@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbd5bc646792284eb25e2ded16a10b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeSpeed: 3
+  activeSpeed: 6
   dashSpeed: 20
   dashLength: 0.2
   dashCounter: 0
@@ -220,5 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1f5d6a8bcec924f8450b4c386f1a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 3
   invulnPeriod: 0
+  explosion: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}

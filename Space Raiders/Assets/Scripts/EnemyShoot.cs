@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class EnemyShoot : MonoBehaviour
 {
-
     public GameObject bulletPrefab;
 
-    public float fireDelay = 0.15f;
+    public float fireDelay = 0.8f;
     float cooldownTimer = 0;
 
     private float shipHeight;
@@ -22,13 +21,13 @@ public class PlayerShoot : MonoBehaviour
     {
         cooldownTimer -= Time.deltaTime;
         
-        if (Input.GetButton("Fire3") && cooldownTimer <= 0 ){
+        if (cooldownTimer <= 0 ){
             //Disparo
-            Debug.Log("Shoot!");
+            Debug.Log("EnemyShoot!");
             cooldownTimer = fireDelay;
 
             Vector3 offset = new Vector3(0,shipHeight,0);
-            Instantiate(bulletPrefab, transform.position + offset, transform.rotation);
+            Instantiate(bulletPrefab, transform.position - offset, transform.rotation * Quaternion.Euler (0f, 180f, 0f));
         }
     }
 }

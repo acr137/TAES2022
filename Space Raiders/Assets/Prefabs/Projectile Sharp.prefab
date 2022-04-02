@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   invulnPeriod: 0
+  blinkPeriod: 0.5
+  explosion: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
 --- !u!70 &6922063626157667904
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,4 +152,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
-  timeSelfDestruct: 5

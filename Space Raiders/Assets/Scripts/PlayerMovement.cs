@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
 
     //Cada nave tendra sus valores de velocidad
-    public static float baseSpeed = 500f;
+    public static float baseSpeed = 6f;
     public float activeSpeed = baseSpeed;
-    public float dashSpeed = 1000f;
+    public float dashSpeed;
     public float dashLength = 0.2f;
     public float dashCounter;
     public float dashCooldownCounter;
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         hitbox = GetComponent<PolygonCollider2D>();
-
+        dashSpeed = baseSpeed * 2.5f;
         //Obtencion de valores para el control de los bordes
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         shipWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x/2;
