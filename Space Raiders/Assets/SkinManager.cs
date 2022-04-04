@@ -16,9 +16,9 @@ public class SkinManager : MonoBehaviour
 
     public void NextOption()
     {
-        selectedSkin++;
+        selectedSkin = selectedSkin + 1;
 
-        if (selectedSkin >= skins.Count)
+        if (selectedSkin > skins.Count)
         {
             selectedSkin = 0;
         }
@@ -28,7 +28,7 @@ public class SkinManager : MonoBehaviour
 
     public void BackOption()
     {
-        selectedSkin--;
+        selectedSkin = selectedSkin - 1;
 
         if (selectedSkin < 0)
         {
@@ -46,9 +46,11 @@ public class SkinManager : MonoBehaviour
         {
             case 0:
                 PlayerPrefs.SetString("ship", "Frigate1");
+                PlayerPrefs.SetInt("posicion", 0);
                 break;
             case 1:
                 PlayerPrefs.SetString("ship", "Spaceship");
+                PlayerPrefs.SetInt("posicion", 1);
                 break;
         }
         SceneManager.LoadScene("nivel_infinito");
