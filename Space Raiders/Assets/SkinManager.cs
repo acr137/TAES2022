@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class SkinManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SkinManager : MonoBehaviour
     public List<Sprite> skins = new List<Sprite>();
     private int selectedSkin = 0;
     public GameObject playerskin;
+    public Text nombreNave;
 
 
     public void NextOption()
@@ -21,6 +23,7 @@ public class SkinManager : MonoBehaviour
             selectedSkin = 0;
         }
         sr.sprite = skins[selectedSkin];
+        nombreNave.text = sr.sprite.name;
     }
 
     public void BackOption()
@@ -32,6 +35,7 @@ public class SkinManager : MonoBehaviour
             selectedSkin = skins.Count - 1;
         }
         sr.sprite = skins[selectedSkin];
+        nombreNave.text = sr.sprite.name;
     }
 
     public void PlayGame()
