@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MenuPausa : MonoBehaviour
 {
     public static bool estadoPausa = false;
     public GameObject menuPausaUI;
+    public AudioSource clip;
 
     // Update is called once per frame
     void Update()
@@ -47,5 +49,9 @@ public class MenuPausa : MonoBehaviour
         menuPausaUI.SetActive(true);
         Time.timeScale = 0f;
         estadoPausa = true;
+    }
+
+    public void PlaySoundButton(){
+        clip.Play();
     }
 }
