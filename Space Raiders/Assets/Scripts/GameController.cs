@@ -24,7 +24,10 @@ public class GameController : MonoBehaviour
         //GameObject prefabPlayer= Resources.Load("Prefabs/" + PlayerPrefs.GetString("ship")) as GameObject;
         //GameObject.Instantiate(prefabPlayer);
         naves[PlayerPrefs.GetInt("posicion")].SetActive(true);
-
+        
+        // Reinicia la variable
+        PlayerPrefs.SetInt("posicion", 0);
+        PlayerPrefs.Save();
 
         Debug.Log("Prefab Name: " + PlayerPrefs.GetString("ship"));
         Debug.Log("Prefab Posicion: " + PlayerPrefs.GetInt("posicion"));
