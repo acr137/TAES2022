@@ -1,11 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public static int Difficulty = 2;
+    // Propiedades privadas
+    private int difficulty;
+    private float timer;
+
+    // Propiedades públicas
     public GameObject hazard;
     public Vector3 spawnValues;
     public int hazardCount;
@@ -16,15 +20,28 @@ public class GameController : MonoBehaviour
     public static bool estadoPausa = false;
     public GameObject menuPausaUI;
 
+    public TextMeshProUGUI textTimer;
+
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("difficulty", 1);
+        PlayerPrefs.Save();
+
+        timer = 0;
+    }
+
+    private void Awake()
+    {
+        difficulty = PlayerPrefs.GetInt("difficulty");
+        Debug.Log("Nivel de dificultad: " + difficulty);
+
         StartCoroutine(SpawnWaves());
 
         //GameObject prefabPlayer= Resources.Load("Prefabs/" + PlayerPrefs.GetString("ship")) as GameObject;
         //GameObject.Instantiate(prefabPlayer);
         naves[PlayerPrefs.GetInt("posicion")].SetActive(true);
-        
+
         // Reinicia la variable
         PlayerPrefs.SetInt("posicion", 0);
         PlayerPrefs.Save();
@@ -47,6 +64,8 @@ public class GameController : MonoBehaviour
                 Pause();
             }
         }
+
+        timerUpdate();
     }
 
     public void Resume()
@@ -86,5 +105,16 @@ public class GameController : MonoBehaviour
             }
             yield return new WaitForSeconds(waveWait);
         }
+    }
+
+    void incrementDifficulty()
+    {
+        difficulty++;
+    }
+
+    void timerUpdate()
+    {
+        timer += Time.deltaTime;
+        textTimer.text = "" + timer.ToString("f1");
     }
 }
