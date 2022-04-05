@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class DamageHandler : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class DamageHandler : MonoBehaviour
     Color blinkColor = new Color(1f,1f,1f,.5f);
     PolygonCollider2D hitbox;
 
+    public AudioSource clip1;
+    public AudioSource clip2;
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -27,8 +31,10 @@ public class DamageHandler : MonoBehaviour
 
     void OnTriggerEnter2D(){
         Debug.Log("Golpe");
+        //clip1.Play();
         health--;
         if(health <= 0){
+            //clip2.Play();
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
