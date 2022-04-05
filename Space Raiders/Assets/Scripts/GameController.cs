@@ -67,6 +67,11 @@ public class GameController : MonoBehaviour
         }
 
         timerUpdate();
+
+        if (seconds % 10 == 0)
+        {
+            incrementDifficulty();
+        }
     }
 
     public void Resume()
@@ -118,13 +123,10 @@ public class GameController : MonoBehaviour
         elapsedTime += Time.deltaTime;
 
         minutes = Mathf.FloorToInt(elapsedTime / 60);
-        textMinutes.text = timeToString(minutes); //minutes.ToString();
+        textMinutes.text = timeToString(minutes);
 
         seconds = Mathf.FloorToInt(elapsedTime % 60);
-        textSeconds.text = timeToString(seconds); //seconds.ToString();
-
-        //textTimer.text = "" + timer.ToString("f1");
-        //Debug.Log("Time: " + elapsedTime);
+        textSeconds.text = timeToString(seconds);
     }
 
     string timeToString(float time)
