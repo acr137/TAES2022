@@ -7,7 +7,8 @@ public class GameController : MonoBehaviour
 {
     // Propiedades privadas
     private int difficulty;
-    private float timer;
+    private float elapsedTime;
+    private float minutes, seconds;
 
     // Propiedades públicas
     public GameObject hazard;
@@ -20,7 +21,7 @@ public class GameController : MonoBehaviour
     public static bool estadoPausa = false;
     public GameObject menuPausaUI;
 
-    public TextMeshProUGUI textTimer;
+    public TextMeshProUGUI textMinutes, textSeconds;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("difficulty", 1);
         PlayerPrefs.Save();
 
-        timer = 0;
+        elapsedTime = 0;
     }
 
     private void Awake()
@@ -114,7 +115,29 @@ public class GameController : MonoBehaviour
 
     void timerUpdate()
     {
-        timer += Time.deltaTime;
-        textTimer.text = "" + timer.ToString("f1");
+        elapsedTime += Time.deltaTime;
+
+        minutes = Mathf.FloorToInt(elapsedTime / 60);
+        textMinutes.text = timeToString(minutes); //minutes.ToString();
+
+        seconds = Mathf.FloorToInt(elapsedTime % 60);
+        textSeconds.text = timeToString(seconds); //seconds.ToString();
+
+        //textTimer.text = "" + timer.ToString("f1");
+        //Debug.Log("Time: " + elapsedTime);
+    }
+
+    string timeToString(float time)
+    {
+        string timeStr = "";
+
+        if (time < 10)
+        {
+            timeStr += "0";
+        }
+
+        timeStr += time.ToString();
+
+        return timeStr;
     }
 }
