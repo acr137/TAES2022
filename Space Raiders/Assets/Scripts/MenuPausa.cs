@@ -15,6 +15,7 @@ public class MenuPausa : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            clip.Play();
             if (estadoPausa)
             {
                 Resume();
@@ -28,6 +29,7 @@ public class MenuPausa : MonoBehaviour
 
     public void Resume()
     {
+        clip.Play();
         menuPausaUI.SetActive(false);
         Time.timeScale = 1f;
         estadoPausa = false;
@@ -35,11 +37,13 @@ public class MenuPausa : MonoBehaviour
     
     public void OptionsMenu()
     {
+        clip.Play();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void SalirJuego()
     {
+        clip.Play();
         Debug.Log("Saliendo del juego...");
         SceneManager.LoadScene("MainMenu");
     }
@@ -49,9 +53,5 @@ public class MenuPausa : MonoBehaviour
         menuPausaUI.SetActive(true);
         Time.timeScale = 0f;
         estadoPausa = true;
-    }
-
-    public void PlaySoundButton(){
-        clip.Play();
     }
 }

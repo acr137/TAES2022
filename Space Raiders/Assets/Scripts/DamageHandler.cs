@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class DamageHandler : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class DamageHandler : MonoBehaviour
     Color blinkColor = new Color(1f,1f,1f,.5f);
     PolygonCollider2D hitbox;
 
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -34,7 +36,7 @@ public class DamageHandler : MonoBehaviour
         }
         invulnTimer = invulnPeriod;
         blinkTimer = blinkPeriod;
-}
+    }
 
     void Update()
     {
