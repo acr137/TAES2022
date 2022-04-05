@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
 
     //Cada nave tendra sus valores de velocidad
-    public static float baseSpeed = 5f;
+    public static float baseSpeed = 6f;
     public float activeSpeed = baseSpeed;
-    public float dashSpeed = 10f;
+    public float dashSpeed;
     public float dashLength = 0.2f;
     public float dashCounter;
     public float dashCooldownCounter;
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         hitbox = GetComponent<PolygonCollider2D>();
-
+        dashSpeed = baseSpeed * 2.5f;
         //Obtencion de valores para el control de los bordes
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         shipWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x/2;
@@ -82,42 +82,5 @@ public class PlayerMovement : MonoBehaviour
         if(dashCooldownCounter>0){
             dashCooldownCounter -= Time.deltaTime;
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (estadoPausa)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-    }
-
-    public void Resume()
-    {
-        menuPausaUI.SetActive(false);
-        Time.timeScale = 1f;
-        estadoPausa = false;
-    }
-
-    public void OptionsMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void SalirJuego()
-    {
-        Debug.Log("Saliendo del juego...");
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    void Pause()
-    {
-        menuPausaUI.SetActive(true);
-        Time.timeScale = 0f;
-        estadoPausa = true;
     }
 }

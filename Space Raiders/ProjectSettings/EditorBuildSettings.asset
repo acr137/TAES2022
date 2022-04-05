@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu_pausa.unity
     guid: 1b7f57253ff25df409ff0e7a075cfdcb
+  - enabled: 1
+    path: Assets/Scenes/menu_selectNave.unity
+    guid: 4f6ef4ba3d8c7f14e9c4233ea948d31b
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
