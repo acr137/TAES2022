@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2675773392524181412}
   - component: {fileID: 2675773392524181423}
   m_Layer: 8
-  m_Name: Frigate 1
+  m_Name: Frigate1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6922063626157667906, guid: 5eedca0daa4c6b044822bb59774c4a57, type: 3}
   fireDelay: 0.15
+  clip: {fileID: 0}
 --- !u!114 &2675773392524181423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,4 +224,4 @@ MonoBehaviour:
   health: 3
   invulnPeriod: 0
   blinkPeriod: 0.5
-  explosion: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
+  explosion: {fileID: 100002, guid: cf4f842dd6bfb464b8c976bc4f3819d8, type: 3}
