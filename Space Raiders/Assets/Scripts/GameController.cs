@@ -128,6 +128,8 @@ public class GameController : MonoBehaviour
     {
         difficulty++;
         PlayerPrefs.SetInt("difficulty", difficulty);
+        // Al cambiar de dificultad, se suman 100 puntos
+        ScoreManager.instance.addPoints(100);
     }
 
     void timerUpdate()
