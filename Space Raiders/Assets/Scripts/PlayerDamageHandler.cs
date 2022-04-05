@@ -7,8 +7,8 @@ public class PlayerDamageHandler : MonoBehaviour
     
     public int health = 1;
     public int maxHealth = 3;
-    public float invulnPeriod = 0;
-    public float blinkPeriod = 0.5f;
+    public float invulnPeriod = 1.2f;
+    public float blinkPeriod = 0.2f;
 
     public GameObject explosion;
     public HealthBar healthBar;
