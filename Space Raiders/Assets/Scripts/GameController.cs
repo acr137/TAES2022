@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    // Constantes globales
+    private readonly int DIFFICULTY_INCREASE_PERIOD = 30;
+
     // Propiedades privadas
     private int difficulty;
     private float elapsedTime;
     private float minutes, seconds;
+    private bool changingDifficulty = false;
 
     // Propiedades públicas
     public GameObject hazard;
@@ -68,9 +72,16 @@ public class GameController : MonoBehaviour
 
         timerUpdate();
 
-        if (seconds % 10 == 0)
+        if (!changingDifficulty && isTimeToIncreaseDifficulty())
         {
+            changingDifficulty = true;
             incrementDifficulty();
+            Debug.Log(difficulty);
+        }
+
+        if (changingDifficulty && !isTimeToIncreaseDifficulty())
+        {
+            changingDifficulty = false;
         }
     }
 
@@ -116,6 +127,7 @@ public class GameController : MonoBehaviour
     void incrementDifficulty()
     {
         difficulty++;
+        PlayerPrefs.SetInt("difficulty", difficulty);
     }
 
     void timerUpdate()
@@ -141,5 +153,20 @@ public class GameController : MonoBehaviour
         timeStr += time.ToString();
 
         return timeStr;
+    }
+
+    bool isTimeToIncreaseDifficulty()
+    {
+        if (!isGameStart() && seconds % DIFFICULTY_INCREASE_PERIOD == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    bool isGameStart()
+    {
+        return (seconds == 0 && minutes == 0);
     }
 }
