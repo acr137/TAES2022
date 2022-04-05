@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SkinManager : MonoBehaviour
 {
@@ -12,10 +13,12 @@ public class SkinManager : MonoBehaviour
     private int selectedSkin = 0;
     public GameObject playerskin;
     public Text nombreNave;
+    public AudioSource clip;
 
 
     public void NextOption()
     {
+        clip.Play();
         selectedSkin = selectedSkin + 1;
 
         if (selectedSkin >= skins.Count)
@@ -28,6 +31,7 @@ public class SkinManager : MonoBehaviour
 
     public void BackOption()
     {
+        clip.Play();
         selectedSkin = selectedSkin - 1;
 
         if (selectedSkin < 0)
@@ -38,10 +42,14 @@ public class SkinManager : MonoBehaviour
         nombreNave.text = sr.sprite.name;
     }
 
+    public void BackToMenu(){
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void PlayGame()
     {
         //PrefabUtility.SaveAsPrefabAsset(playerskin, "Assets/Prefabs/Spaceship.prefab");
-
+        clip.Play();
         switch (selectedSkin)
         {
             case 0:

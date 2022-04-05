@@ -4890,7 +4890,7 @@ GameObject:
   - component: {fileID: 19900002}
   - component: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: ShipExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9730,7 +9730,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f9e83d8e5dba89742874d5af150e1d65, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d1560c57aae832242b2b62a90d737301, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

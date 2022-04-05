@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     public AudioSource clip;
     
     public void BotonInfinito(){
-        SceneManager.LoadScene("nivel_infinito");
+        SceneManager.LoadScene("menu_selectNave");
     }
 
     public void BotonHistoria(){
