@@ -29,13 +29,14 @@ public class AsteroidMovement : MonoBehaviour
     {
         if (this.gameObject.transform.position.y < -6)
         {
-            ScoreManager.instance.addPoints(points);
+            //ScoreManager.instance.addPoints(points);
             Destroy(this.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        ScoreManager.instance.addPoints(points);
         Instantiate(explotion, transform.position, transform.rotation);
         Destroy(gameObject);
     }
