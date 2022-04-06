@@ -9,13 +9,13 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     
-    private Queue<string> sentences;
+    private Queue<string> sentences = new Queue<string>();
     public Dialogue dialogue;
    
     
     void Start()
     {
-        sentences = new Queue<string>();
+        
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Starting conversation with" + dialogue.name);
         animator.SetBool("IsOpen",true);
         sentences.Clear();
+        Time.timeScale = 0.2f;
 
         foreach (string sentence in dialogue.sentences) 
         {
@@ -49,6 +50,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        Time.timeScale = 1f;
         Debug.Log("End of conversation");
     }
 }
