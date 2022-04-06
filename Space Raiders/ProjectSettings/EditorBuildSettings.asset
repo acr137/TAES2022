@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu_niveles.unity
     guid: 84f6f55352c4e744686373ea6b094d93
-  - enabled: 1
-    path: Assets/Scenes/nivel_1.unity
-    guid: d86b226852217e64f8c5e4171155ff05
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/menu_tienda.unity
     guid: 6527caa5fc8261642ad2c9be9c365af3
@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PlayerMovement.unity
     guid: 8ed95f2c6b4f3f8419b2e795d2e46c63
+  - enabled: 1
+    path: Assets/Scenes/nivel_1.unity
+    guid: 1d2d1f4621b256140a7a03d7c1c8949e
   - enabled: 1
     path: Assets/Scenes/menu_pausa.unity
     guid: 1b7f57253ff25df409ff0e7a075cfdcb
