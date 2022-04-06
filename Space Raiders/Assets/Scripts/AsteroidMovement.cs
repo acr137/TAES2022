@@ -7,13 +7,15 @@ public class AsteroidMovement : MonoBehaviour
     private Rigidbody2D rig;
     private float velocity;
     private int points = 10;
+    private int difficulty;
 
     public GameObject explotion;
 
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
-        velocity = Random.Range(((float)GameController.Difficulty), (float)GameController.Difficulty * 2.0f) * -1.0f;
+        difficulty = PlayerPrefs.GetInt("difficulty");
+        velocity = Random.Range(difficulty, difficulty * 2.0f) * -1.0f;
     }
 
     // Start is called before the first frame update
@@ -27,13 +29,14 @@ public class AsteroidMovement : MonoBehaviour
     {
         if (this.gameObject.transform.position.y < -6)
         {
-            ScoreManager.instance.addPoints(points);
+            //ScoreManager.instance.addPoints(points);
             Destroy(this.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        ScoreManager.instance.addPoints(points);
         Instantiate(explotion, transform.position, transform.rotation);
         Destroy(gameObject);
     }

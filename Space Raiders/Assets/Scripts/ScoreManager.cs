@@ -46,6 +46,7 @@ public class ScoreManager : MonoBehaviour
     public void Awake()
     {
         instance = this;
+        gameDifficulty = PlayerPrefs.GetInt("difficulty");
     }
 
     // Start is called before the first frame update

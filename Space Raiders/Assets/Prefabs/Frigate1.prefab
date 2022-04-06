@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2675773392524181410}
   - component: {fileID: 2675773392524181411}
   - component: {fileID: 2675773392524181412}
-  - component: {fileID: 2675773392524181423}
+  - component: {fileID: -1611387142369868607}
   m_Layer: 8
   m_Name: Frigate1
   m_TagString: Untagged
@@ -105,6 +105,7 @@ MonoBehaviour:
   dashCooldownCounter: 0
   dashCooldown: 1
   menuPausaUI: {fileID: 0}
+  explotion: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
 --- !u!60 &2675773392524181411
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -208,8 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6922063626157667906, guid: 5eedca0daa4c6b044822bb59774c4a57, type: 3}
   fireDelay: 0.15
-  clip: {fileID: 0}
---- !u!114 &2675773392524181423
+--- !u!114 &-1611387142369868607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,10 +218,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2675773392524181413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d1f5d6a8bcec924f8450b4c386f1a69, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bb6ef18fe74529499358a207363faa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  invulnPeriod: 0
-  blinkPeriod: 0.5
-  explosion: {fileID: 100002, guid: cf4f842dd6bfb464b8c976bc4f3819d8, type: 3}
+  maxHealth: 3
+  invulnPeriod: 1.2
+  blinkPeriod: 0.2
+  explosion: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
+  healthBar: {fileID: 1097716806359805448, guid: 40618724baf1cd94082678ff6e2904ec, type: 3}
