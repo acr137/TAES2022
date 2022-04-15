@@ -18,7 +18,7 @@ public class SkinManager : MonoBehaviour
     {
         selectedSkin = selectedSkin + 1;
 
-        if (selectedSkin > skins.Count)
+        if (selectedSkin >= skins.Count)
         {
             selectedSkin = 0;
         }
