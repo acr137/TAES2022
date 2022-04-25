@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu_selectNave.unity
     guid: 4f6ef4ba3d8c7f14e9c4233ea948d31b
+  - enabled: 1
+    path: Assets/Scenes/saldo.unity
+    guid: eb4d8fd734b513a49acac679c3823db3
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

@@ -20,6 +20,10 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("menu_tienda");
     }
 
+    public void BotonSaldo(){
+        SceneManager.LoadScene("saldo");
+    }
+
     public void BotonSalir(){
         Application.Quit();
     }
