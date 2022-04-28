@@ -25,6 +25,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public void BotonSalir(){
+        PlayerPrefs.SetInt("saldo", 0);
         Application.Quit();
     }
 
