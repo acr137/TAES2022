@@ -15,12 +15,13 @@ public class HorizontalEnemyMovement : MonoBehaviour
     public Rigidbody2D rb;
     public bool runsAway = true;
     public char runAwayDirecction = 'd'; //u,d,l,r = up,down,left,right
-    public int timeBeforeRunsAway = 1000;
-    public int modifyStopPosition = 0;
-    public int fallSpeed = 0;
+    public float timeBeforeRunsAway = 10; //En segundos
+    public float modifyStopPosition = 0;
+    public float fallSpeed = 0;
     private int phase = 0;
+    public float runAwaySpeed = 0; //Si se deja a 0 sera igual que la velocidad normal
     [HideInInspector]
-    int runAwayCounter = 0;
+    float runAwayCounter;
     private Vector2 screenBounds; //Nos da la mitad de los valores totales de la pantalla
     private float objectWith;
     private float objectHeight;
@@ -30,7 +31,7 @@ public class HorizontalEnemyMovement : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         objectWith = transform.GetComponent<PolygonCollider2D>().bounds.size.x / 2;
         objectHeight = transform.GetComponent<PolygonCollider2D>().bounds.size.y / 2;
-
+        if (runAwaySpeed == 0) runAwaySpeed = speed;
     }
 
     
@@ -83,27 +84,28 @@ public class HorizontalEnemyMovement : MonoBehaviour
        Debug.Log("CLD: " + screenBounds.x);
        */
         
-        if (transform.position.x < screenBounds.x * -1 + objectWith)
+        if (transform.position.x < screenBounds.x * -1 + objectWith) //Si se ha pasado de la izquierda de la pantalla, cambia dirección a derecha
         {
             speed = Mathf.Abs(speed);
         }
-        else if (transform.position.x > screenBounds.x - objectWith)
+        else if (transform.position.x > screenBounds.x - objectWith)//Si se ha pasado de la derecha de la pantalla, cambia dirección a izquierda
         {
             speed = Mathf.Abs(speed) * -1;
         }
         rb.velocity = new Vector2(speed * Time.fixedDeltaTime, fallSpeed * -1 * Time.fixedDeltaTime);
-        Debug.Log(runAwayCounter);
+        Debug.Log("RunAwayTime: " + runAwayCounter);
         Debug.Log(timeBeforeRunsAway);
         if (runAwayCounter >= timeBeforeRunsAway && runsAway == true)
         {
             phase = 2;
             Debug.Log("Cambio a fase 2");
         }
-        runAwayCounter++;
+        runAwayCounter += Time.deltaTime;
     }
     //huye hacia alante
     void runAway()
     {
+        speed = runAwaySpeed;
         switch (runAwayDirecction)
         {
             case 'u':

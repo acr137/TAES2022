@@ -324,13 +324,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0084115e82987064795a9683798aa036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 120
+  speed: 150
   rb: {fileID: 1766820729295947288}
   runsAway: 1
   runAwayDirecction: 100
-  timeBeforeRunsAway: 1000
+  timeBeforeRunsAway: 10
   modifyStopPosition: 0
-  fallSpeed: 10
+  fallSpeed: 5
+  runAwaySpeed: 300
 --- !u!114 &6783173159150648914
 MonoBehaviour:
   m_ObjectHideFlags: 0

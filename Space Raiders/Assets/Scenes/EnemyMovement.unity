@@ -136,11 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2282272452783935686, guid: d7bf8485b12552f40bdaa36fc39c1ed1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.6429005
+      value: -6.33
       objectReference: {fileID: 0}
     - target: {fileID: 2282272452783935686, guid: d7bf8485b12552f40bdaa36fc39c1ed1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.69386005
+      value: -2.68
       objectReference: {fileID: 0}
     - target: {fileID: 2282272452783935686, guid: d7bf8485b12552f40bdaa36fc39c1ed1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -335,25 +335,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2231683632938925249, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
-      propertyPath: runAwayDirecction
-      value: 114
-      objectReference: {fileID: 0}
-    - target: {fileID: 2231683632938925249, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
-      propertyPath: timeBeforeRunsAway
-      value: 3000
-      objectReference: {fileID: 0}
     - target: {fileID: 3825745492871991912, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3825745492871991912, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2908947
+      value: -1.65
       objectReference: {fileID: 0}
     - target: {fileID: 3825745492871991912, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8139063
+      value: 8.09
       objectReference: {fileID: 0}
     - target: {fileID: 3825745492871991912, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -526,7 +518,8 @@ MonoBehaviour:
   speed: 200
   rb: {fileID: 1856539055}
   runsAway: 1
-  runAwayDirecction: 100
-  timeBeforeRunsAway: 10000
-  modifyStopPosition: 0
+  runAwayDirecction: 117
+  timeBeforeRunsAway: 15
+  modifyStopPosition: -2
   fallSpeed: 0
+  runAwaySpeed: 0

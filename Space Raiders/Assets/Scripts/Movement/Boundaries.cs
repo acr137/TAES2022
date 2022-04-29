@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * OBLIGA AL OBJETO A PERMANECER DENTRO DE LAS PAREDES DERECHA E IZQUIERDA DE LA PANTALLA
+ */
 public class Boundaries : MonoBehaviour
 {
     private Vector2 screenBounds; //Nos da la mitad de los valores totales de la pantalla
