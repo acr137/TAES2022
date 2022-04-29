@@ -335,6 +335,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2231683632938925249, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
+      propertyPath: runAwayDirecction
+      value: 114
+      objectReference: {fileID: 0}
     - target: {fileID: 3825745492871991912, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -518,7 +522,7 @@ MonoBehaviour:
   speed: 200
   rb: {fileID: 1856539055}
   runsAway: 1
-  runAwayDirecction: 117
+  runAwayDirecction: 108
   timeBeforeRunsAway: 15
   modifyStopPosition: -2
   fallSpeed: 0

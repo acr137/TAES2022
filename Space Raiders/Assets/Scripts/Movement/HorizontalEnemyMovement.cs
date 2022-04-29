@@ -124,5 +124,9 @@ public class HorizontalEnemyMovement : MonoBehaviour
                 rb.velocity = new Vector2(0, Mathf.Abs(speed * Time.fixedDeltaTime) * -1); // Hacia abajo por defecto
                 break;
         }
+        if (transform.position.x < screenBounds.x * -1.5 || transform.position.x > screenBounds.x * 1.5 || transform.position.y > screenBounds.y * 1.5 || transform.position.y < screenBounds.y * -1.5)
+        {
+            Destroy(gameObject);
+        }
     }
 }
