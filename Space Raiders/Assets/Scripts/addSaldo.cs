@@ -38,6 +38,7 @@ public class addSaldo : MonoBehaviour
             saldo = saldo.Replace(".", ",");
             saldoFloat += float.Parse(saldo);
             Debug.Log(saldoFloat);
+            SceneManager.LoadScene("mainMenu");
         } catch(FormatException e){
             error.text = "*Debes introducir un numero*";
             Debug.Log(e.Message);
