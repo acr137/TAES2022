@@ -40,7 +40,7 @@ public class AimedBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if(collision.gameObject.name.Equals("Player"))
+        if(collision.gameObject.tag.Equals("Player"))
         {
             Debug.Log("Hit!");
             Destroy(gameObject);
