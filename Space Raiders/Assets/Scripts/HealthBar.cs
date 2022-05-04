@@ -41,13 +41,13 @@ public class HealthBar : MonoBehaviour
 
 
 
-        //Para probar
-        if(Input.GetButtonDown("Jump")){
-            repair(1);
-        }
-        if(Input.GetButtonDown("Fire1")){
-            add(2);
-        }
+        ////Para probar
+        //if(Input.GetButtonDown("Jump")){
+        //    repair(1);
+        //}
+        //if(Input.GetButtonDown("Fire1")){
+        //    add(2);
+        //}
 
     }
 
