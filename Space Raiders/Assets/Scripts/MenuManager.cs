@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
     public AudioSource clip;
+    private float saldoFloat;
+    public TextMeshProUGUI saldoField;
+
+    void Start()
+    {
+        LoadData();
+        saldoField.text = "Saldo: " + saldoFloat + "€";
+    }
     
     public void BotonInfinito(){
         SceneManager.LoadScene("menu_selectNave");
@@ -25,10 +34,16 @@ public class MenuManager : MonoBehaviour
     }
 
     public void BotonSalir(){
+        PlayerPrefs.SetInt("saldo", 0);
         Application.Quit();
     }
 
     public void PlaySoundButton(){
         clip.Play();
+    }
+
+    public void LoadData()
+    {
+        saldoFloat = PlayerPrefs.GetFloat("saldo", 0);
     }
 }

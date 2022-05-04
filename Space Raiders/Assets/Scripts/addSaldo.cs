@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using TMPro;
 
 public class addSaldo : MonoBehaviour
 {
     public AudioSource clip;
     private string saldo;
-    private int saldoInt;
+    private float saldoFloat;
     private string nombreSaldo = "saldo";
+    public TextMeshProUGUI error;
 
     
     // Start is called before the first frame update
@@ -33,13 +35,15 @@ public class addSaldo : MonoBehaviour
     public void sendSaldo()
     {
         try{
-            //MOSTRAR UN MENSAJE DE ERROR SI NO SE INTRODUCE
-            // UN ENTERO O NO SE INTRODUCE NADA
-            saldoInt += Int32.Parse(saldo);
-            Debug.Log(saldoInt);
+            saldo = saldo.Replace(".", ",");
+            saldoFloat += float.Parse(saldo);
+            Debug.Log(saldoFloat);
+            SceneManager.LoadScene("mainMenu");
         } catch(FormatException e){
+            error.text = "*Debes introducir un numero*";
             Debug.Log(e.Message);
         } catch(ArgumentNullException e){
+            error.text = "*Debes introducir un numero*";
             Debug.Log(e.Message);
         }
     }
@@ -61,11 +65,11 @@ public class addSaldo : MonoBehaviour
 
     public void SaveData()
     {
-        PlayerPrefs.SetInt(nombreSaldo, saldoInt);
+        PlayerPrefs.SetFloat(nombreSaldo, saldoFloat);
     }
 
     public void LoadData()
     {
-        saldoInt = PlayerPrefs.GetInt(nombreSaldo, 0);
+        saldoFloat = PlayerPrefs.GetFloat(nombreSaldo, 0);
     }
 }

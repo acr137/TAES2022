@@ -100,6 +100,7 @@ public class GameController : MonoBehaviour
     public void SalirJuego()
     {
         Debug.Log("Saliendo del juego...");
+        Resume();
         SceneManager.LoadScene("MainMenu");
     }
 
