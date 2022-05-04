@@ -598,6 +598,8 @@ MonoBehaviour:
   naves:
   - {fileID: 0}
   menuPausaUI: {fileID: 1987148784}
+  textMinutes: {fileID: 0}
+  textSeconds: {fileID: 0}
 --- !u!4 &471325226
 Transform:
   m_ObjectHideFlags: 0
@@ -2742,6 +2744,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1097716806359805448, guid: 40618724baf1cd94082678ff6e2904ec, type: 3}
+      propertyPath: fullHeart
+      value: 
+      objectReference: {fileID: 21300000, guid: c31fa248fc4d3cc488aaa125b9aab890, type: 3}
     - target: {fileID: 1097716806359805450, guid: 40618724baf1cd94082678ff6e2904ec, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2834,5 +2840,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salud
       objectReference: {fileID: 0}
+    - target: {fileID: 1097716807257754712, guid: 40618724baf1cd94082678ff6e2904ec, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 82.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1097716807257754712, guid: 40618724baf1cd94082678ff6e2904ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -929.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1097716807257754712, guid: 40618724baf1cd94082678ff6e2904ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -512.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1097716807257754714, guid: 40618724baf1cd94082678ff6e2904ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c31fa248fc4d3cc488aaa125b9aab890, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40618724baf1cd94082678ff6e2904ec, type: 3}

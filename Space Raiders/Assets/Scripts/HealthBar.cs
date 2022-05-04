@@ -12,6 +12,9 @@ public class HealthBar : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    public PlayerDamageHandler player;
+    void Start(){
+    }
     // Update is called once per frame
     void Update()
     {
@@ -22,7 +25,8 @@ public class HealthBar : MonoBehaviour
         for (int i=0; i<hearts.Length;i++){
             if(i<health){
                 hearts[i].sprite = fullHeart;
-            }else{
+            }
+            else{
                 hearts[i].sprite = emptyHeart;
             }
 
@@ -32,6 +36,30 @@ public class HealthBar : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+
+
+
+
+
+        //Para probar
+        // if(Input.GetButtonDown("Jump")){
+        //     repair(1);
+        // }
+        // if(Input.GetButtonDown("Fire1")){
+        //     add(2);
+        // }
+
+    }
+
+    public void repair(int hp){
+        health+=hp;
+        player.repair(hp);
+    }
+
+    public void add(int hp){
+        maxHealth+=hp;
+        health+=hp;
+        player.add(hp);
     }
 
     public void set(int hp, int maxhp){
@@ -41,5 +69,9 @@ public class HealthBar : MonoBehaviour
 
     public void damage(int dmg){
         health -= dmg;
+    }
+
+    public void ChangeDmgHandler(PlayerDamageHandler handler){
+        player=handler;
     }
 }

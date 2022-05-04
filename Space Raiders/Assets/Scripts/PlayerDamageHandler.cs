@@ -25,6 +25,10 @@ public class PlayerDamageHandler : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         hitbox = GetComponent<PolygonCollider2D>();
         healthBar.set(health,maxHealth);
+
+        GameObject Salud = GameObject.Find("Salud");
+        HealthBar SaludScript = Salud.GetComponent<HealthBar>();
+        SaludScript.ChangeDmgHandler(this);
     }
 
     void OnTriggerEnter2D(){
@@ -59,5 +63,14 @@ public class PlayerDamageHandler : MonoBehaviour
                 hitbox.enabled=true;
             }
         }
+    }
+
+     public void repair(int hp){
+        health+=hp;
+    }
+
+    public void add(int hp){
+        maxHealth+=hp;
+        health+=hp;
     }
 }
