@@ -23,7 +23,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Starting conversation with" + dialogue.name);
         animator.SetBool("IsOpen",true);
         sentences.Clear();
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0.1f;
 
         foreach (string sentence in dialogue.sentences) 
         {
@@ -35,6 +35,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        Debug.Log("Sentences left: " + sentences.Count);
         if (sentences.Count == 0)
         {
             EndDialogue();
