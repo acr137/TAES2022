@@ -9,6 +9,11 @@ public class Nivel1 : MonoBehaviour
     public GameObject narrador;
     public GameObject narrador2;
     public GameController gameControler;
+    private bool end = false;
+    private bool end2 = false;
+    private bool death = false;
+    private float timeOfDeath;
+    private float timeDeath = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,17 +27,34 @@ public class Nivel1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameControler.getSeconds() == 30f)
+        if (!GameObject.Find("Frigate1")) //SOLO SE PUEDE JUGAR CON Frigate1 A NO SER QUE SE CAMBIE ESTA LINEA
         {
+            death = true;
+            
+        };
+        if (death == true) 
+        {
+
+            Debug.Log("TD: " + timeDeath);
+            
+            timeDeath += Time.deltaTime;
+            if(timeDeath > 1) SceneManager.LoadScene("MainMenu");
+            return;
+        }
+        if (gameControler.getSeconds() == 30f && end == false)
+        {
+            end = true;
             Debug.Log("Nivel completado");
             DialogueTrigger dialogoNarrador2 = narrador2.GetComponent<DialogueTrigger>();
             dialogoNarrador2.TriggerDialogue();
         }
-        if (gameControler.getSeconds() == 31f)
+        if (gameControler.getSeconds() == 31f && end2 == false)
         {
+            Debug.Log("end2 = true");
+            end2 = true;
+            Time.timeScale = 1f;
             End();
         }
-        
     }
 
     public void LoadMenu_niveles()
@@ -47,7 +69,7 @@ public class Nivel1 : MonoBehaviour
 
     public void End() 
     {
-        SceneManager.LoadScene("menu_niveles");
+        SceneManager.LoadScene("MainMenu");
 
     }
 }

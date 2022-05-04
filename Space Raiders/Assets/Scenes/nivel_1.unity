@@ -2262,9 +2262,11 @@ MonoBehaviour:
   dialogue:
     name: Narrador
     sentences:
-    - 'Bienvenido al primer nivel de Space Raiders! '
-    - Muevete con las flechas del teclado o wasd y esquiva con la barra espaciadora.
-    - "Deber\xE1s aguantar 30 segundos para pasar la tormenta de asteroides."
+    - "\xA1Bienvenido al tutorial de Space Raiders! "
+    - Muevete con las flechas del teclado o wasd, esquiva con la barra espaciadora
+      y dispara con shift.
+    - "Tu objetivo es aguantar el mayor tiempo posible. Deber\xE1s aguantar 30 segundos
+      para pasar la tormenta de asteroides."
 --- !u!4 &1488624517
 Transform:
   m_ObjectHideFlags: 0
