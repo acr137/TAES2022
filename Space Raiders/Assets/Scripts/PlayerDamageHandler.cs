@@ -40,6 +40,11 @@ public class PlayerDamageHandler : MonoBehaviour
         healthBar.damage(1);
         if(health <= 0){
             Instantiate(explosion, transform.position, transform.rotation);
+
+            // Reproduce el sonido de Game Over
+            GameObject goSound = GameObject.Find("GameOverAudio");
+            Instantiate(goSound, goSound.transform.position, goSound.transform.rotation);
+
             Destroy(gameObject);
         }
         invulnTimer = invulnPeriod;

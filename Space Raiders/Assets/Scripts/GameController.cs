@@ -200,7 +200,9 @@ public class GameController : MonoBehaviour
         return (seconds == 0 && minutes == 0);
     }
 
-    public float getSeconds() { return seconds;}
+    public float getSeconds() {
+        return seconds;
+    }
 
     private int getHealth()
     {
