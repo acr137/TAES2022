@@ -13,6 +13,7 @@ public class HealthBar : MonoBehaviour
     public Sprite emptyHeart;
 
     public PlayerDamageHandler player;
+
     void Start(){
     }
     // Update is called once per frame
@@ -72,6 +73,6 @@ public class HealthBar : MonoBehaviour
     }
 
     public void ChangeDmgHandler(PlayerDamageHandler handler){
-        player=handler;
+        player = handler;
     }
 }
