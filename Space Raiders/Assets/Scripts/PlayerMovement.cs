@@ -86,15 +86,4 @@ public class PlayerMovement : MonoBehaviour
             dashCooldownCounter -= Time.deltaTime;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Colisión con : " + collision.gameObject.name);
-
-        if (Equals(collision.gameObject.tag, "Object"))
-        {
-            Instantiate(explotion, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-    }
 }
