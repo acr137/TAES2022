@@ -43,7 +43,10 @@ public class PlayerDamageHandler : MonoBehaviour
 
             // Reproduce el sonido de Game Over
             GameObject goSound = GameObject.Find("GameOverAudio");
-            Instantiate(goSound, goSound.transform.position, goSound.transform.rotation);
+            if (goSound != null)
+            {   // Evita que salte una excepción si el objeto del audio no existe en la escena
+                Instantiate(goSound, goSound.transform.position, goSound.transform.rotation);
+            }
 
             Destroy(gameObject);
         }

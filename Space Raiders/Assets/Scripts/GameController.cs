@@ -128,7 +128,7 @@ public class GameController : MonoBehaviour
     // Activa la pantalla de Game Over
     private void GameOver()
     {
-        gameOverPanel.SetActive(true);
+        gameOverPanel?.SetActive(true);
         Time.timeScale = 0f;
     }
 
