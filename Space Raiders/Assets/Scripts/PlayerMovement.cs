@@ -27,9 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 screenBounds;
 
-    public static bool estadoPausa = false;
-    public GameObject menuPausaUI;
-
     // Animación de destrucción
     public GameObject explotion;
 
