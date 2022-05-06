@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     public static bool estadoPausa = false;
     public GameObject menuPausaUI;
     // GameObject de la pantalla de Game Over
-    private GameObject gameOverPanel;
+    public GameObject gameOverPanel;
 
     public TextMeshProUGUI textMinutes, textSeconds;
 
@@ -87,10 +87,10 @@ public class GameController : MonoBehaviour
         }
 
         //Debug.Log("Salud : " + PlayerPrefs.GetInt("health"));
-        //if ()
-        //{
-        //    PlayerPrefs.SetInt("difficulty", difficulty);
-        //}
+        if (getHealth() < 1)
+        {
+            GameOver();
+        }
     }
 
     public void Resume()
@@ -98,6 +98,9 @@ public class GameController : MonoBehaviour
         menuPausaUI.SetActive(false);
         Time.timeScale = 1f;
         estadoPausa = false;
+
+        // Deja de mostrar el mensaje de Game Over si está activo
+        gameOverPanel.SetActive(false);
     }
 
     public void OptionsMenu()
@@ -120,9 +123,10 @@ public class GameController : MonoBehaviour
     }
 
     // Activa la pantalla de Game Over
-    static void GameOver()
+    private void GameOver()
     {
-
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     IEnumerator SpawnWaves()
@@ -188,4 +192,9 @@ public class GameController : MonoBehaviour
     }
 
     public float getSeconds() { return seconds;}
+
+    private int getHealth()
+    {
+        return PlayerPrefs.GetInt("health");
+    }
 }
