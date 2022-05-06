@@ -1216,6 +1216,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &689479650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1141841665013768619, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
+  m_PrefabInstance: {fileID: 2094041251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &727761962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,8 +1765,8 @@ MonoBehaviour:
   spawnWait: 0.5
   waveWait: 1
   naves:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 689479650}
+  - {fileID: 1844266528}
   menuPausaUI: {fileID: 727761962}
   textMinutes: {fileID: 1036505244}
   textSeconds: {fileID: 507205750}
@@ -2599,6 +2604,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1844266528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 377649777077374334, guid: 18d7c9728b2e2e641b5121068993fb26, type: 3}
+  m_PrefabInstance: {fileID: 211584337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1887552207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,6 +2923,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1141841665013768619, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2675773392524181408, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -2989,5 +3003,9 @@ PrefabInstance:
       propertyPath: soundGameOver
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8297261674018747378, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
+      propertyPath: explotion
+      value: 
+      objectReference: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
