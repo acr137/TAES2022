@@ -35,6 +35,9 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("difficulty", 1);
         PlayerPrefs.Save();
 
+        // Hace que el tiempo pase de forma normal
+        Time.timeScale = 1f;
+
         elapsedTime = 0;
     }
 
@@ -127,6 +130,12 @@ public class GameController : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void Restart()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     IEnumerator SpawnWaves()
