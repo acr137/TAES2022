@@ -27,9 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 screenBounds;
 
-    public static bool estadoPausa = false;
-    public GameObject menuPausaUI;
-
     // Animación de destrucción
     public GameObject explotion;
 
@@ -84,17 +81,6 @@ public class PlayerMovement : MonoBehaviour
         }
         if(dashCooldownCounter>0){
             dashCooldownCounter -= Time.deltaTime;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Colisión con : " + collision.gameObject.name);
-
-        if (Equals(collision.gameObject.tag, "Object"))
-        {
-            Instantiate(explotion, transform.position, transform.rotation);
-            Destroy(gameObject);
         }
     }
 }
