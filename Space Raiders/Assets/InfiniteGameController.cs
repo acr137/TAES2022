@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class InfiniteGameController : MonoBehaviour
 {
     // Constantes globales
-    private readonly int DIFFICULTY_INCREASE_PERIOD = 30;
+    private readonly int DIFFICULTY_INCREASE_PERIOD = 15 /*segundos*/;
 
     // Propiedades privadas
     private int difficulty;
@@ -30,7 +30,7 @@ public class InfiniteGameController : MonoBehaviour
     public TextMeshProUGUI textMinutes, textSeconds;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         PlayerPrefs.SetInt("difficulty", 1);
         PlayerPrefs.Save();
@@ -43,9 +43,13 @@ public class InfiniteGameController : MonoBehaviour
 
     private void Awake()
     {
+        // Inicializa la difficultad
+        PlayerPrefs.SetInt("difficulty", 1);
+        PlayerPrefs.Save();
         difficulty = PlayerPrefs.GetInt("difficulty");
         Debug.Log("Nivel de dificultad: " + difficulty);
 
+        // Inicia la generación de enemigos
         StartCoroutine(SpawnWaves());
 
         //GameObject prefabPlayer= Resources.Load("Prefabs/" + PlayerPrefs.GetString("ship")) as GameObject;
@@ -61,7 +65,7 @@ public class InfiniteGameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -118,7 +122,7 @@ public class InfiniteGameController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    void Pause()
+    private void Pause()
     {
         menuPausaUI.SetActive(true);
         Time.timeScale = 0f;
@@ -138,7 +142,7 @@ public class InfiniteGameController : MonoBehaviour
         SceneManager.LoadScene(scene.name);
     }
 
-    IEnumerator SpawnWaves()
+    private IEnumerator SpawnWaves()
     {
         while (true)
         {
@@ -152,7 +156,7 @@ public class InfiniteGameController : MonoBehaviour
         }
     }
 
-    void incrementDifficulty()
+    private void incrementDifficulty()
     {
         difficulty++;
         PlayerPrefs.SetInt("difficulty", difficulty);
@@ -160,7 +164,7 @@ public class InfiniteGameController : MonoBehaviour
         ScoreManager.instance.addPoints(100);
     }
 
-    void timerUpdate()
+    private void timerUpdate()
     {
         elapsedTime += Time.deltaTime;
 
@@ -171,7 +175,7 @@ public class InfiniteGameController : MonoBehaviour
         textSeconds.text = timeToString(seconds);
     }
 
-    string timeToString(float time)
+    private string timeToString(float time)
     {
         string timeStr = "";
 
@@ -185,14 +189,20 @@ public class InfiniteGameController : MonoBehaviour
         return timeStr;
     }
 
-    bool isTimeToIncreaseDifficulty()
+    private bool isTimeToIncreaseDifficulty()
     {
-        if (!isGameStart() && seconds % DIFFICULTY_INCREASE_PERIOD == 0)
+        if (!isGameStart() &&
+            timeToSeconds() % DIFFICULTY_INCREASE_PERIOD == 0)
         {
             return true;
         }
 
         return false;
+    }
+
+    private float timeToSeconds()
+    {
+        return minutes * 60 + seconds;
     }
 
     bool isGameStart()
