@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class InfiniteGameController : MonoBehaviour
 {
     // Constantes globales
-    private readonly int DIFFICULTY_INCREASE_PERIOD = 15 /*segundos*/;
+    private readonly int DIFFICULTY_INCREASE_PERIOD = 10 /*segundos*/;
 
     // Propiedades privadas
     private int difficulty;
@@ -162,6 +162,10 @@ public class InfiniteGameController : MonoBehaviour
         PlayerPrefs.SetInt("difficulty", difficulty);
         // Al cambiar de dificultad, se suman 100 puntos
         ScoreManager.instance.addPoints(100);
+
+        // Genera enemigo especial
+        Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(spawnValues.y, spawnValues.y + 5), spawnValues.z);
+        Instantiate(hazards[2], spawnPosition, Quaternion.identity);
     }
 
     private void timerUpdate()

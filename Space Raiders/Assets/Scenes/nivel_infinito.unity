@@ -1444,8 +1444,8 @@ MonoBehaviour:
   - {fileID: 6205470190787990698, guid: 60ad54742bde3f3468fb147d29ddfb39, type: 3}
   - {fileID: 6205470190787990698, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
   spawnValues: {x: 8, y: 6, z: 0.1}
-  hazardCount: 5
-  spawnWait: 0.5
+  hazardCount: 2
+  spawnWait: 1
   waveWait: 1
   naves:
   - {fileID: 2094041252}
