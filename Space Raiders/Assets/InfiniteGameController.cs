@@ -158,14 +158,21 @@ public class InfiniteGameController : MonoBehaviour
 
     private void incrementDifficulty()
     {
-        difficulty++;
-        PlayerPrefs.SetInt("difficulty", difficulty);
+        saveDifficulty(difficulty++);
+
         // Al cambiar de dificultad, se suman 100 puntos
         ScoreManager.instance.addPoints(100);
 
         // Genera enemigo especial
         Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(spawnValues.y, spawnValues.y + 5), spawnValues.z);
         Instantiate(hazards[2], spawnPosition, Quaternion.identity);
+    }
+
+    // Guarda el valor de la dificultad en la variable global asignada
+    private void saveDifficulty(int difficulty)
+    {
+        PlayerPrefs.SetInt("difficulty", difficulty);
+        PlayerPrefs.Save();
     }
 
     private void timerUpdate()
