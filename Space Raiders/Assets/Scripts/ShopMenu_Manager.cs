@@ -13,27 +13,27 @@ public class ShopMenu_Manager : MonoBehaviour
     /// Texto a proyectar
     /// </summary>
     public TextMeshProUGUI saldoText;
-    private int saldo = 0;
+    private float saldo = 0;
     private string nombreSaldo = "saldo";
 
     // Start is called before the first frame update
     void Start()
     {
-        saldo = PlayerPrefs.GetInt(nombreSaldo, 0);
+        saldo = PlayerPrefs.GetFloat(nombreSaldo, 0);
 
-        saldoText.text = "Saldo: " + saldo.ToString();
+        saldoText.text = "Saldo: " + saldo.ToString() + "€";
     }
 
     public void substract(int coste)
     {
-        int result = saldo - coste;
+        float result = saldo - coste;
         if(result < 0)
         {
 
         }
         else
         {
-            PlayerPrefs.SetInt(nombreSaldo, result);
+            PlayerPrefs.SetFloat(nombreSaldo, result);
         }
     }
 
