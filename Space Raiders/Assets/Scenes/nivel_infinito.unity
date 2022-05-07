@@ -3864,6 +3864,10 @@ PrefabInstance:
       propertyPath: soundGameOver
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5237951821357762043, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6452326815210827432, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
       propertyPath: m_RootOrder
       value: 3
