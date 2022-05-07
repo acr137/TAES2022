@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class InfiniteGameController : MonoBehaviour
 {
     // Constantes globales
-    private readonly int DIFFICULTY_INCREASE_PERIOD = 10 /*segundos*/;
+    private readonly int DIFFICULTY_INCREASE_PERIOD = 60 /*segundos*/;
 
     // Propiedades privadas
     private int difficulty;
@@ -165,7 +165,24 @@ public class InfiniteGameController : MonoBehaviour
 
         // Genera enemigo especial
         Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(spawnValues.y, spawnValues.y + 5), spawnValues.z);
-        Instantiate(hazards[2], spawnPosition, Quaternion.identity);
+        // Elige aleatoriamente el enemigo que va a generar
+        int random = Random.Range(0, 99);
+        int enemy = 0;
+
+        if (random < 30)
+        {
+            enemy = 1;
+        } else if (random < 80)
+        {
+            enemy = 2;
+        } else
+        {
+            enemy = 3;
+        }
+
+        Debug.Log("Ha salido el número " + random + ". Así que se ha generado el enemigo " + enemy);
+
+        Instantiate(hazards[enemy], spawnPosition, Quaternion.identity);
     }
 
     // Guarda el valor de la dificultad en la variable global asignada
