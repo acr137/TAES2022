@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
 
     public static bool estadoPausa = false;
     public GameObject menuPausaUI;
+    // GameObject de la pantalla de Game Over
+    public GameObject gameOverPanel;
 
     public TextMeshProUGUI textMinutes, textSeconds;
 
@@ -32,6 +34,9 @@ public class GameController : MonoBehaviour
     {
         PlayerPrefs.SetInt("difficulty", 1);
         PlayerPrefs.Save();
+
+        // Hace que el tiempo pase de forma normal
+        Time.timeScale = 1f;
 
         elapsedTime = 0;
     }
@@ -83,6 +88,12 @@ public class GameController : MonoBehaviour
         {
             changingDifficulty = false;
         }
+
+        //Debug.Log("Salud : " + PlayerPrefs.GetInt("health"));
+        if (getHealth() < 1)
+        {
+            GameOver();
+        }
     }
 
     public void Resume()
@@ -90,6 +101,9 @@ public class GameController : MonoBehaviour
         menuPausaUI.SetActive(false);
         Time.timeScale = 1f;
         estadoPausa = false;
+
+        // Deja de mostrar el mensaje de Game Over si está activo
+        gameOverPanel.SetActive(false);
     }
 
     public void OptionsMenu()
@@ -109,6 +123,19 @@ public class GameController : MonoBehaviour
         menuPausaUI.SetActive(true);
         Time.timeScale = 0f;
         estadoPausa = true;
+    }
+
+    // Activa la pantalla de Game Over
+    private void GameOver()
+    {
+        gameOverPanel?.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Restart()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     IEnumerator SpawnWaves()
@@ -173,5 +200,12 @@ public class GameController : MonoBehaviour
         return (seconds == 0 && minutes == 0);
     }
 
-    public float getSeconds() { return seconds;}
+    public float getSeconds() {
+        return seconds;
+    }
+
+    private int getHealth()
+    {
+        return PlayerPrefs.GetInt("health");
+    }
 }
