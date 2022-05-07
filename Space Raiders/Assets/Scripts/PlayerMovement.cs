@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     //Cada nave tendra sus valores de velocidad
-    public static float baseSpeed = 6f;
-    public float activeSpeed = baseSpeed;
+    public float baseSpeed = 6f;
+    public float activeSpeed;
     public float dashSpeed;
     public float dashLength = 0.2f;
     public float dashCounter;
@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        activeSpeed = baseSpeed;
         sprite = GetComponent<SpriteRenderer>();
         hitbox = GetComponent<PolygonCollider2D>();
         dashSpeed = baseSpeed * 2.5f;
