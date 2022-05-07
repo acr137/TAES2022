@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 
     public static bool estadoPausa = false;
     public GameObject menuPausaUI;
+    public GameObject menuSettingsUI;
     // GameObject de la pantalla de Game Over
     public GameObject gameOverPanel;
 
@@ -99,6 +100,7 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         menuPausaUI.SetActive(false);
+        menuSettingsUI.SetActive(false);
         Time.timeScale = 1f;
         estadoPausa = false;
 
@@ -108,7 +110,16 @@ public class GameController : MonoBehaviour
 
     public void OptionsMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        menuSettingsUI.SetActive(true);
+        menuPausaUI.SetActive(false);
+        //SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OptionsVolverBoton()
+    {
+        menuSettingsUI.SetActive(false);
+        menuPausaUI.SetActive(true);
+        //SceneManager.LoadScene("MainMenu");
     }
 
     public void SalirJuego()
