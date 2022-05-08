@@ -15,6 +15,10 @@ public class SkinManager : MonoBehaviour
     public Text nombreNave;
     public AudioSource clip;
 
+    private void Awake()
+    {
+        nombreNave.text = sr.sprite.name;    
+    }
 
     public void NextOption()
     {
