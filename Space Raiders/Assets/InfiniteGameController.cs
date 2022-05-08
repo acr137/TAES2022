@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class InfiniteGameController : MonoBehaviour
 {
     // Constantes globales
-    private readonly int DIFFICULTY_INCREASE_PERIOD = 60 /*segundos*/;
+    private readonly int DIFFICULTY_INCREASE_PERIOD = 30/*segundos*/;
+    private readonly int GENERATION_TIME = 10/*segundos*/;
 
     // Propiedades privadas
     private int difficulty;
     private float elapsedTime;
     private float minutes, seconds;
     private bool changingDifficulty = false;
+    private bool enemyGenerated = false;
 
     // Propiedades públicas
     public GameObject[] hazards;
@@ -93,6 +95,18 @@ public class InfiniteGameController : MonoBehaviour
             changingDifficulty = false;
         }
 
+        // Muestra un enemigo cada 10 segundos
+        if (!enemyGenerated && isTimeToGenerateEnemy())
+        {
+            enemyGenerated = true;
+            generateEnemy();
+        }
+
+        if (enemyGenerated && !isTimeToGenerateEnemy())
+        {
+            enemyGenerated = false;
+        }
+
         //Debug.Log("Salud : " + PlayerPrefs.GetInt("health"));
         if (getHealth() < 1)
         {
@@ -146,13 +160,13 @@ public class InfiniteGameController : MonoBehaviour
     {
         while (true)
         {
-            for (int i = 0; i < hazardCount; i++)
+            for (int i = 0; i < hazardCount + difficulty; i++)
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(spawnValues.y, spawnValues.y + 5), spawnValues.z);
                 Instantiate(hazards[0], spawnPosition, Quaternion.identity);
                 yield return new WaitForSeconds(spawnWait);
             }
-            yield return new WaitForSeconds(waveWait);
+            yield return new WaitForSeconds(Mathf.Max((waveWait / 1f + 0.1f * (float)difficulty), 0.5f));
         }
     }
 
@@ -163,6 +177,12 @@ public class InfiniteGameController : MonoBehaviour
         // Al cambiar de dificultad, se suman 100 puntos
         ScoreManager.instance.addPoints(100);
 
+        generateEnemy();
+    }
+
+    // Genera un enemigo aleatoriamente
+    private void generateEnemy()
+    {
         // Genera enemigo especial
         Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(spawnValues.y, spawnValues.y + 5), spawnValues.z);
         // Elige aleatoriamente el enemigo que va a generar
@@ -172,10 +192,12 @@ public class InfiniteGameController : MonoBehaviour
         if (random < 30)
         {
             enemy = 1;
-        } else if (random < 80)
+        }
+        else if (random < 80)
         {
             enemy = 2;
-        } else
+        }
+        else
         {
             enemy = 3;
         }
@@ -221,6 +243,16 @@ public class InfiniteGameController : MonoBehaviour
     {
         if (!isGameStart() &&
             timeToSeconds() % DIFFICULTY_INCREASE_PERIOD == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool isTimeToGenerateEnemy()
+    {
+        if (timeToSeconds() % GENERATION_TIME == 0)
         {
             return true;
         }
