@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     private float gameDifficulty = 1;
 
-    private string test = "Test ";
+    private string test = "";
 
     // Se ejecuta antes del Start()
     public void Awake()
