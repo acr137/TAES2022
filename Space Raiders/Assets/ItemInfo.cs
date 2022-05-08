@@ -22,6 +22,6 @@ public class ItemInfo : MonoBehaviour
 
     void Update()
     {
-        PirceTxt.text = "Price: " + ShopManager.GetComponent<ShopMenu_Manager>().shopItems[2, ItemID].ToString() + "€";
+        PirceTxt.text = "Price: " + ShopManager.GetComponent<ShopMenu_Manager>().shopItems[2, ItemID ].ToString() + "€";
     }
 }
