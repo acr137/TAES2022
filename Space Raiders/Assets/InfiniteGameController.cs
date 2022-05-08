@@ -3,19 +3,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour
+public class InfiniteGameController : MonoBehaviour
 {
     // Constantes globales
-    private readonly int DIFFICULTY_INCREASE_PERIOD = 30;
+    private readonly int DIFFICULTY_INCREASE_PERIOD = 30/*segundos*/;
+    private readonly int GENERATION_TIME = 10/*segundos*/;
 
     // Propiedades privadas
     private int difficulty;
     private float elapsedTime;
     private float minutes, seconds;
     private bool changingDifficulty = false;
+    private bool enemyGenerated = false;
 
     // Propiedades públicas
-    public GameObject hazard;
+    public GameObject[] hazards;
     public Vector3 spawnValues;
     public int hazardCount;
     public float spawnWait;
@@ -24,14 +26,13 @@ public class GameController : MonoBehaviour
 
     public static bool estadoPausa = false;
     public GameObject menuPausaUI;
-    public GameObject menuSettingsUI;
     // GameObject de la pantalla de Game Over
     public GameObject gameOverPanel;
 
     public TextMeshProUGUI textMinutes, textSeconds;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         PlayerPrefs.SetInt("difficulty", 1);
         PlayerPrefs.Save();
@@ -44,9 +45,13 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        // Inicializa la difficultad
+        PlayerPrefs.SetInt("difficulty", 1);
+        PlayerPrefs.Save();
         difficulty = PlayerPrefs.GetInt("difficulty");
         Debug.Log("Nivel de dificultad: " + difficulty);
 
+        // Inicia la generación de enemigos
         StartCoroutine(SpawnWaves());
 
         //GameObject prefabPlayer= Resources.Load("Prefabs/" + PlayerPrefs.GetString("ship")) as GameObject;
@@ -62,7 +67,7 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -90,6 +95,18 @@ public class GameController : MonoBehaviour
             changingDifficulty = false;
         }
 
+        // Muestra un enemigo cada 10 segundos
+        if (!enemyGenerated && isTimeToGenerateEnemy())
+        {
+            enemyGenerated = true;
+            generateEnemy();
+        }
+
+        if (enemyGenerated && !isTimeToGenerateEnemy())
+        {
+            enemyGenerated = false;
+        }
+
         //Debug.Log("Salud : " + PlayerPrefs.GetInt("health"));
         if (getHealth() < 1)
         {
@@ -100,7 +117,6 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         menuPausaUI.SetActive(false);
-        menuSettingsUI.SetActive(false);
         Time.timeScale = 1f;
         estadoPausa = false;
 
@@ -110,16 +126,7 @@ public class GameController : MonoBehaviour
 
     public void OptionsMenu()
     {
-        menuSettingsUI.SetActive(true);
-        menuPausaUI.SetActive(false);
-        //SceneManager.LoadScene("MainMenu");
-    }
-
-    public void OptionsVolverBoton()
-    {
-        menuSettingsUI.SetActive(false);
-        menuPausaUI.SetActive(true);
-        //SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void SalirJuego()
@@ -129,7 +136,7 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    void Pause()
+    private void Pause()
     {
         menuPausaUI.SetActive(true);
         Time.timeScale = 0f;
@@ -149,29 +156,65 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(scene.name);
     }
 
-    IEnumerator SpawnWaves()
+    private IEnumerator SpawnWaves()
     {
         while (true)
         {
-            for (int i = 0; i < hazardCount; i++)
+            for (int i = 0; i < hazardCount + difficulty; i++)
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(spawnValues.y, spawnValues.y + 5), spawnValues.z);
-                Instantiate(hazard, spawnPosition, Quaternion.identity);
+                Instantiate(hazards[0], spawnPosition, Quaternion.identity);
                 yield return new WaitForSeconds(spawnWait);
             }
-            yield return new WaitForSeconds(waveWait);
+            yield return new WaitForSeconds(Mathf.Max((waveWait / 1f + 0.1f * (float)difficulty), 0.5f));
         }
     }
 
-    void incrementDifficulty()
+    private void incrementDifficulty()
     {
-        difficulty++;
-        PlayerPrefs.SetInt("difficulty", difficulty);
+        saveDifficulty(difficulty++);
+
         // Al cambiar de dificultad, se suman 100 puntos
         ScoreManager.instance.addPoints(100);
+
+        generateEnemy();
     }
 
-    void timerUpdate()
+    // Genera un enemigo aleatoriamente
+    private void generateEnemy()
+    {
+        // Genera enemigo especial
+        Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(spawnValues.y, spawnValues.y + 5), spawnValues.z);
+        // Elige aleatoriamente el enemigo que va a generar
+        int random = Random.Range(0, 99);
+        int enemy = 0;
+
+        if (random < 30)
+        {
+            enemy = 1;
+        }
+        else if (random < 80)
+        {
+            enemy = 2;
+        }
+        else
+        {
+            enemy = 3;
+        }
+
+        Debug.Log("Ha salido el número " + random + ". Así que se ha generado el enemigo " + enemy);
+
+        Instantiate(hazards[enemy], spawnPosition, Quaternion.identity);
+    }
+
+    // Guarda el valor de la dificultad en la variable global asignada
+    private void saveDifficulty(int difficulty)
+    {
+        PlayerPrefs.SetInt("difficulty", difficulty);
+        PlayerPrefs.Save();
+    }
+
+    private void timerUpdate()
     {
         elapsedTime += Time.deltaTime;
 
@@ -182,7 +225,7 @@ public class GameController : MonoBehaviour
         textSeconds.text = timeToString(seconds);
     }
 
-    string timeToString(float time)
+    private string timeToString(float time)
     {
         string timeStr = "";
 
@@ -196,9 +239,10 @@ public class GameController : MonoBehaviour
         return timeStr;
     }
 
-    bool isTimeToIncreaseDifficulty()
+    private bool isTimeToIncreaseDifficulty()
     {
-        if (!isGameStart() && seconds % DIFFICULTY_INCREASE_PERIOD == 0)
+        if (!isGameStart() &&
+            timeToSeconds() % DIFFICULTY_INCREASE_PERIOD == 0)
         {
             return true;
         }
@@ -206,12 +250,28 @@ public class GameController : MonoBehaviour
         return false;
     }
 
+    private bool isTimeToGenerateEnemy()
+    {
+        if (timeToSeconds() % GENERATION_TIME == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private float timeToSeconds()
+    {
+        return minutes * 60 + seconds;
+    }
+
     bool isGameStart()
     {
         return (seconds == 0 && minutes == 0);
     }
 
-    public float getSeconds() {
+    public float getSeconds()
+    {
         return seconds;
     }
 

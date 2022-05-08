@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1766820729295947288}
   - component: {fileID: 9175981232504769856}
   - component: {fileID: 6783173159150648914}
+  - component: {fileID: 7941774811627296503}
   m_Layer: 9
   m_Name: Enemy UFO
   m_TagString: Untagged
@@ -341,3 +342,23 @@ MonoBehaviour:
   invulnPeriod: 0
   blinkPeriod: 0.5
   explosion: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
+--- !u!114 &7941774811627296503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205470190787990698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0084115e82987064795a9683798aa036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  rb: {fileID: 1766820729295947288}
+  runsAway: 1
+  runAwayDirecction: 100
+  timeBeforeRunsAway: 10
+  modifyStopPosition: 0
+  fallSpeed: 0
+  runAwaySpeed: 0

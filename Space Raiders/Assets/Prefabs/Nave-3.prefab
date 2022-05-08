@@ -455,7 +455,6 @@ MonoBehaviour:
   dashCounter: 0
   dashCooldownCounter: 0
   dashCooldown: 1
-  menuPausaUI: {fileID: 0}
   explotion: {fileID: 0}
 --- !u!114 &6562994968288598061
 MonoBehaviour:
@@ -514,7 +513,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4e4ccb394a256a647a7756505c8c3ad5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
