@@ -14,8 +14,8 @@ public class AsteroidMovement : MonoBehaviour
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
-        difficulty = PlayerPrefs.GetInt("difficulty");
-        velocity = Random.Range(difficulty, difficulty * 2.0f) * -1.0f;
+        difficulty = 1/*PlayerPrefs.GetInt("difficulty")*/;
+        velocity = Random.Range(difficulty, difficulty * 3.0f) * -1.0f;
     }
 
     // Start is called before the first frame update
