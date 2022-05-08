@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class InfiniteGameController : MonoBehaviour
 {
     // Constantes globales
-    private readonly int DIFFICULTY_INCREASE_PERIOD = 60 /*segundos*/;
+    private readonly int DIFFICULTY_INCREASE_PERIOD =  30/*segundos*/;
 
     // Propiedades privadas
     private int difficulty;
