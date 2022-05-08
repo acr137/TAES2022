@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class ItemInfo : MonoBehaviour
 {
+    private bool active = true;
     public int ItemID;
-    public TextMeshProUGUI PirceTxt;
+    public TextMeshProUGUI PirceText;
+    public TextMeshProUGUI NameText;
     public GameObject ShopManager;
     public Button thisItem;
 
@@ -16,12 +18,16 @@ public class ItemInfo : MonoBehaviour
         if (PlayerPrefs.HasKey("shopItemStatuse"))
         {
             bool[] status = PlayerPrefsX.GetBoolArray("shopItemStatuse");
-            thisItem.interactable = status[ItemID];
+            active = status[ItemID];
+            thisItem.interactable = active;
+            PirceText.text = "sold";
         }
     }
 
     void Update()
     {
-        PirceTxt.text = "Price: " + ShopManager.GetComponent<ShopMenu_Manager>().shopItems[2, ItemID ].ToString() + "€";
+        if(active)
+            PirceText.text = "" + ShopManager.GetComponent<ShopMenu_Manager>().shopItems[2, ItemID ].ToString() + "€";
+        NameText.text = "nave-" + (ItemID + 1);
     }
 }

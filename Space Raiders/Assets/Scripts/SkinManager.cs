@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System.Linq;
 
 public class SkinManager : MonoBehaviour
 {
@@ -15,20 +16,42 @@ public class SkinManager : MonoBehaviour
     public Text nombreNave;
     public AudioSource clip;
 
+    private bool[] itemsStatus = Enumerable.Repeat(true, ShopMenu_Manager.shopNum).ToArray();
+
     private void Awake()
     {
-        nombreNave.text = sr.sprite.name;    
+        nombreNave.text = sr.sprite.name;
+        if (PlayerPrefs.HasKey("shopItemStatuse"))
+        {
+            itemsStatus = PlayerPrefsX.GetBoolArray("shopItemStatuse");
+        }
+        itemsStatus[0] = false;
+    }
+
+    private int searchNext()
+    {
+        int next = selectedSkin;
+
+        for(int i = next; i < ShopMenu_Manager.shopNum && itemsStatus[i]; i++)
+        {
+            next = i;
+        }
+
+        return next;
     }
 
     public void NextOption()
     {
         clip.Play();
-        selectedSkin = selectedSkin + 1;
-
-        if (selectedSkin >= skins.Count)
+        do
         {
-            selectedSkin = 0;
-        }
+            selectedSkin = selectedSkin + 1;
+            if (selectedSkin >= skins.Count)
+            {
+                selectedSkin = 0;
+            }
+        } while (itemsStatus[selectedSkin]);
+
         sr.sprite = skins[selectedSkin];
         nombreNave.text = sr.sprite.name;
     }
@@ -36,12 +59,15 @@ public class SkinManager : MonoBehaviour
     public void BackOption()
     {
         clip.Play();
-        selectedSkin = selectedSkin - 1;
-
-        if (selectedSkin < 0)
+        do
         {
-            selectedSkin = skins.Count - 1;
-        }
+            selectedSkin = selectedSkin - 1;
+            if (selectedSkin < 0)
+            {
+                selectedSkin = skins.Count - 1;
+            }
+        } while (itemsStatus[selectedSkin]);
+
         sr.sprite = skins[selectedSkin];
         nombreNave.text = sr.sprite.name;
     }
