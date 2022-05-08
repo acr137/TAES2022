@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &207247098451693221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 207247098451693223}
+  - component: {fileID: 207247098451693220}
+  m_Layer: 0
+  m_Name: Controller Powerups
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &207247098451693223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207247098451693221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.95, y: -0.32, z: -29.643984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &207247098451693220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207247098451693221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f54e2e67a7c324e802369ca16f92b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 10
+  powerups:
+  - {fileID: 9132150719013404068, guid: 17ddd63459d13a94880db30ea2c7d57f, type: 3}
+  - {fileID: 2230306248903423779, guid: e420eadd3518d9e43bc955eb8463b991, type: 3}
+  - {fileID: 3939539452365027723, guid: 8f69dc75c6e9f314981c76f2c26049ca, type: 3}
+  - {fileID: 5784633110355013993, guid: 9660c124c8e3bfd4ca45f8ff487d01cd, type: 3}
+  - {fileID: 7647503606122137695, guid: 5d03691d61f27fa4dbb24348b7330bde, type: 3}
+  - {fileID: 4015500502479959842, guid: b216fe42664bbc04caad99e32407e16b, type: 3}
+  - {fileID: 918865054685385908, guid: 86f78cc00778f5941a2fed8ae6079e8e, type: 3}
+  - {fileID: 881084507283075888, guid: 7f823a6ec92756541b1fcb1b005ac548, type: 3}
