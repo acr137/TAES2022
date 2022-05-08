@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerupAttackSpeed : MonoBehaviour
+public class PowerupRay : MonoBehaviour
 {
     PlayerShoot pScript;
-    public float boostAmount = 0.09f;
     public float duration = 7f;
+
+    public GameObject rayPrefab;
+
     private void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -16,7 +18,9 @@ public class PowerupAttackSpeed : MonoBehaviour
     {
         Debug.Log("Powerup cogido");
 
-        pScript.attackBoost(duration, boostAmount);
+        pScript.oldShotType = pScript.shotType;
+        pScript.shotType = 3;
+        pScript.rayPowerUp(rayPrefab,duration);
 
         Destroy(gameObject);
     }

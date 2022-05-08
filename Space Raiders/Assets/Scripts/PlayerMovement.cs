@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
     // Animación de destrucción
     public GameObject explotion;
 
+    private float oldSpeed;
+    private float boostDuration;
+    private bool boost;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,5 +86,30 @@ public class PlayerMovement : MonoBehaviour
         if(dashCooldownCounter>0){
             dashCooldownCounter -= Time.deltaTime;
         }
+
+        //SpeedBoost powerup
+        if(boostDuration > 0)
+        {
+            boostDuration -= Time.deltaTime;
+        }
+        else
+        {
+            if (boost)
+            {
+                baseSpeed = oldSpeed;
+                activeSpeed = baseSpeed;
+                boost = false;
+            }
+            
+        }
+    }
+
+    public void speedBoost(float duration, float boostAmount)
+    {
+        oldSpeed = baseSpeed;
+        baseSpeed += boostAmount;
+        activeSpeed = baseSpeed;
+        boostDuration = duration;
+        boost = true;
     }
 }

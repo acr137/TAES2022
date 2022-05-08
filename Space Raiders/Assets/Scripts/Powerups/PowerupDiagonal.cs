@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerupAttackSpeed : MonoBehaviour
+public class PowerupDiagonal : MonoBehaviour
 {
     PlayerShoot pScript;
-    public float boostAmount = 0.09f;
-    public float duration = 7f;
+
     private void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -16,8 +15,14 @@ public class PowerupAttackSpeed : MonoBehaviour
     {
         Debug.Log("Powerup cogido");
 
-        pScript.attackBoost(duration, boostAmount);
-
+        if (pScript.shotType != 3)
+        {
+            pScript.shotType = 2;
+        }
+        else
+        {
+            pScript.oldShotType = 2;
+        }
         Destroy(gameObject);
     }
 }

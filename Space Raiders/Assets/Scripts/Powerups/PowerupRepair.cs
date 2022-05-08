@@ -17,21 +17,7 @@ public class PowerupRepair : MonoBehaviour
     {
         Debug.Log("Powerup cogido");
 
-        //GameObject player = collision.gameObject;
-        //PlayerDamageHandler pScript = player.GetComponent<PlayerDamageHandler>();
-        //pScript.repair(healAmount);
         salud.repair(healAmount);
         Destroy(gameObject);
     }
-    // Start is called before the first frame update
-    //void Start()
-    //{
-
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
 }
