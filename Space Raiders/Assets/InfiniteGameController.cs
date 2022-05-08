@@ -166,7 +166,7 @@ public class InfiniteGameController : MonoBehaviour
                 Instantiate(hazards[0], spawnPosition, Quaternion.identity);
                 yield return new WaitForSeconds(spawnWait);
             }
-            yield return new WaitForSeconds(waveWait);
+            yield return new WaitForSeconds(Mathf.Max((waveWait / 1f + 0.1f * (float)difficulty), 0.5f));
         }
     }
 
