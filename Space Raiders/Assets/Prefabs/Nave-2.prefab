@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 8783663917372436197}
   m_Layer: 8
   m_Name: Nave-2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,7 +225,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbd5bc646792284eb25e2ded16a10b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseSpeed: 6
   activeSpeed: 5.5
   dashSpeed: 0
   dashLength: 0.2
@@ -531,6 +532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6922063626157667906, guid: 5eedca0daa4c6b044822bb59774c4a57, type: 3}
   fireDelay: 0.2
+  shotType: 0
+  oldShotType: 0
   clip: {fileID: 7740336848748419086}
 --- !u!1001 &8356233863898980239
 PrefabInstance:
