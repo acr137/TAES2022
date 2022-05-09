@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     //Cada nave tendra sus valores de velocidad
-    public static float baseSpeed = 6f;
-    public float activeSpeed = baseSpeed;
+    public float baseSpeed = 6f;
+    public float activeSpeed;
     public float dashSpeed;
     public float dashLength = 0.2f;
     public float dashCounter;
@@ -30,9 +30,13 @@ public class PlayerMovement : MonoBehaviour
     // Animación de destrucción
     public GameObject explotion;
 
+    private float oldSpeed;
+    private float boostDuration;
+    private bool boost;
     // Start is called before the first frame update
     void Start()
     {
+        activeSpeed = baseSpeed;
         sprite = GetComponent<SpriteRenderer>();
         hitbox = GetComponent<PolygonCollider2D>();
         dashSpeed = baseSpeed * 2.5f;
@@ -82,5 +86,30 @@ public class PlayerMovement : MonoBehaviour
         if(dashCooldownCounter>0){
             dashCooldownCounter -= Time.deltaTime;
         }
+
+        //SpeedBoost powerup
+        if(boostDuration > 0)
+        {
+            boostDuration -= Time.deltaTime;
+        }
+        else
+        {
+            if (boost)
+            {
+                baseSpeed = oldSpeed;
+                activeSpeed = baseSpeed;
+                boost = false;
+            }
+            
+        }
+    }
+
+    public void speedBoost(float duration, float boostAmount)
+    {
+        oldSpeed = baseSpeed;
+        baseSpeed += boostAmount;
+        activeSpeed = baseSpeed;
+        boostDuration = duration;
+        boost = true;
     }
 }

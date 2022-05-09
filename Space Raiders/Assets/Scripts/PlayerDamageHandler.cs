@@ -34,27 +34,32 @@ public class PlayerDamageHandler : MonoBehaviour
         SaludScript.ChangeDmgHandler(this);
     }
 
-    void OnTriggerEnter2D(){
-        Debug.Log("Golpe");
-        health--;
-        healthBar.damage(1);
-        if(health <= 0){
-            Instantiate(explosion, transform.position, transform.rotation);
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag != "powerup")
+        {
+            Debug.Log("Golpe");
+            health--;
+            healthBar.damage(1);
+            if (health <= 0)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
 
-            // Reproduce el sonido de Game Over
-            GameObject goSound = GameObject.Find("GameOverAudio");
-            if (goSound != null)
-            {   // Evita que salte una excepción si el objeto del audio no existe en la escena
-                Instantiate(goSound, goSound.transform.position, goSound.transform.rotation);
+                // Reproduce el sonido de Game Over
+                GameObject goSound = GameObject.Find("GameOverAudio");
+                if (goSound != null)
+                {   // Evita que salte una excepciï¿½n si el objeto del audio no existe en la escena
+                    Instantiate(goSound, goSound.transform.position, goSound.transform.rotation);
+                }
+
+                Destroy(gameObject);
             }
+            invulnTimer = invulnPeriod;
+            blinkTimer = blinkPeriod;
 
-            Destroy(gameObject);
+            // Se actualiza la salud de forma global
+            saveHealthGlobally(health);
         }
-        invulnTimer = invulnPeriod;
-        blinkTimer = blinkPeriod;
-
-        // Se actualiza la salud de forma global
-        saveHealthGlobally(health);
     }
 
     void Update()
@@ -81,6 +86,9 @@ public class PlayerDamageHandler : MonoBehaviour
 
      public void repair(int hp){
         health+=hp;
+        if(health>maxHealth){
+            health=maxHealth;
+        }
 
         // Se actualiza la salud de forma global
         saveHealthGlobally(health);

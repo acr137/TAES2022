@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Object
   - Projectile
-  - ShopEvent
+  - powerup
   layers:
   - Default
   - TransparentFX
@@ -18,8 +18,8 @@ TagManager:
   - 
   - Player
   - Enemy
-  - 
-  - 
+  - Powerup
+  - Shield
   - 
   - 
   - 
