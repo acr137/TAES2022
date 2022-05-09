@@ -93,8 +93,8 @@ public class HorizontalEnemyMovement : MonoBehaviour
             speed = Mathf.Abs(speed) * -1;
         }
         rb.velocity = new Vector2(speed * Time.fixedDeltaTime, fallSpeed * -1 * Time.fixedDeltaTime);
-        Debug.Log("RunAwayTime: " + runAwayCounter);
-        Debug.Log(timeBeforeRunsAway);
+        //Debug.Log("RunAwayTime: " + runAwayCounter);
+        //Debug.Log(timeBeforeRunsAway);
         if (runAwayCounter >= timeBeforeRunsAway && runsAway == true)
         {
             phase = 2;

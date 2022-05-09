@@ -20,7 +20,7 @@ public class ShopMenu_Manager : MonoBehaviour
     private string nombreSaldo = "saldo";
     private GameObject ButtonRef;
 
-    private static int shopNum = 6;
+    public static int shopNum = 10;
     private bool[] itemsStatus = Enumerable.Repeat(true, shopNum).ToArray();
 
     public int[,] shopItems = new int[3, shopNum];
@@ -43,13 +43,21 @@ public class ShopMenu_Manager : MonoBehaviour
         shopItems[1, 3] = 3;
         shopItems[1, 4] = 4;
         shopItems[1, 5] = 5;
+        shopItems[1, 6] = 6;
+        shopItems[1, 7] = 7;
+        shopItems[1, 8] = 8;
+        shopItems[1, 9] = 9;
 
         //Price
         shopItems[2, 1] = 100;
-        shopItems[2, 2] = 100;
-        shopItems[2, 3] = 100;
-        shopItems[2, 4] = 100;
-        shopItems[2, 5] = 100;
+        shopItems[2, 2] = 200;
+        shopItems[2, 3] = 300;
+        shopItems[2, 4] = 400;
+        shopItems[2, 5] = 500;
+        shopItems[2, 6] = 600;
+        shopItems[2, 7] = 700;
+        shopItems[2, 8] = 800;
+        shopItems[2, 9] = 900;
     }
 
     public void selectShip()
