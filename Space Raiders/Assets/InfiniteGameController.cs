@@ -41,6 +41,8 @@ public class InfiniteGameController : MonoBehaviour
         Time.timeScale = 1f;
 
         elapsedTime = 0;
+
+        estadoPausa = false;
     }
 
     private void Awake()
