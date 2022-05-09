@@ -48,7 +48,7 @@ public class PlayerDamageHandler : MonoBehaviour
                 // Reproduce el sonido de Game Over
                 GameObject goSound = GameObject.Find("GameOverAudio");
                 if (goSound != null)
-                {   // Evita que salte una excepción si el objeto del audio no existe en la escena
+                {   // Evita que salte una excepciï¿½n si el objeto del audio no existe en la escena
                     Instantiate(goSound, goSound.transform.position, goSound.transform.rotation);
                 }
 
@@ -86,6 +86,9 @@ public class PlayerDamageHandler : MonoBehaviour
 
      public void repair(int hp){
         health+=hp;
+        if(health>maxHealth){
+            health=maxHealth;
+        }
 
         // Se actualiza la salud de forma global
         saveHealthGlobally(health);
