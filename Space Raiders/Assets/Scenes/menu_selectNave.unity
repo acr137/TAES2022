@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 93307067}
   - component: {fileID: 93307066}
   m_Layer: 0
-  m_Name: Destroyer 1
+  m_Name: Spaceship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,7 +330,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9731eae082186de439e5f70163f17d35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d3a1ef9934effa4bb3607cce319e718, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -350,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 93307065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 1.9, z: 0}
-  m_LocalScale: {x: 10.9272585, y: 8.272041, z: 1}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -885,7 +885,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Destroyer 1
+  m_Text: Spaceship name
 --- !u!222 &523726913
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1423,8 +1423,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 93307066}
   skins:
-  - {fileID: 21300000, guid: 9731eae082186de439e5f70163f17d35, type: 3}
-  - {fileID: 21300000, guid: ee940bccf66e0d848a77d494bcf71e33, type: 3}
+  - {fileID: 21300000, guid: 9d3a1ef9934effa4bb3607cce319e718, type: 3}
+  - {fileID: 21300000, guid: 969a8f177f5e3a640b10de9cdac542fb, type: 3}
+  - {fileID: 21300000, guid: cd5e2408a3efdb04190f80b9ed995abe, type: 3}
+  - {fileID: 21300000, guid: 1339afe3f46be3c499983c2ac6d2f3bb, type: 3}
+  - {fileID: 21300000, guid: 4f959854a0785724380790c1875137fc, type: 3}
+  - {fileID: 21300000, guid: 841537f7248303441bc1f0500e28c182, type: 3}
+  - {fileID: 21300000, guid: 6d73340234deca64cb6ce32d146431fa, type: 3}
+  - {fileID: 21300000, guid: 699e96b93f08fa94ba00991fceab9be2, type: 3}
+  - {fileID: 21300000, guid: 108e3e2691a30734fbbf8edef4f2c27e, type: 3}
+  - {fileID: 21300000, guid: 56bf214d7a31ce1438eb4c07bb46c657, type: 3}
   playerskin: {fileID: 93307065}
   nombreNave: {fileID: 523726912}
   clip: {fileID: 777995509}
