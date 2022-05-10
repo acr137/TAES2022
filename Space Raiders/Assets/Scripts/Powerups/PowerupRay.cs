@@ -8,17 +8,20 @@ public class PowerupRay : MonoBehaviour
     public float duration = 7f;
 
     public GameObject rayPrefab;
-
+    GameObject controller;
+    NotificationPowerup noti;
     private void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         pScript = player.GetComponent<PlayerShoot>();
+        controller = GameObject.Find("Controller Powerups");
+        noti = controller.GetComponent<NotificationPowerup>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Powerup cogido");
+        string desc = "Disparo laser (7 seg)";
+        noti.popup(desc);
 
-        pScript.oldShotType = pScript.shotType;
         pScript.shotType = 3;
         pScript.rayPowerUp(rayPrefab,duration);
 

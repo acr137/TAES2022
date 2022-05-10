@@ -21,7 +21,6 @@ public class PlayerShoot : MonoBehaviour
     private float oldFireDelay;
 
     private float rayDuration;
-    public int oldShotType;
     public AudioSource clip;
 
     void Start(){
@@ -39,13 +38,6 @@ public class PlayerShoot : MonoBehaviour
             {
                 rayShot();
             }
-
-            rayDuration -= Time.deltaTime;
-
-            if(rayDuration <= 0)
-            {
-                shotType = oldShotType;
-            }
         }
         else
         {
@@ -61,14 +53,28 @@ public class PlayerShoot : MonoBehaviour
                 {
                     normalShot();
                 }
-                else if (shotType == 1)
+                else
                 {
-                    tripleShot();
+                    if (shotType == 1)
+                    {
+                        tripleShot();
+                    }
+                    else if (shotType == 2)
+                    {
+                        diagonalShot();
+                    }
                 }
-                else if (shotType == 2)
-                {
-                    diagonalShot();
-                }
+                
+            }
+        }
+
+        if (shotType != 0)
+        {
+            rayDuration -= Time.deltaTime;
+
+            if (rayDuration <= 0)
+            {
+                shotType = 0;
             }
         }
 
@@ -135,5 +141,11 @@ public class PlayerShoot : MonoBehaviour
     public float getShipHeight()
     {
         return shipHeight;
+    }
+
+    public void specialShot(int shot, float duration)
+    {
+        shotType = shot;
+        rayDuration = duration;
     }
 }

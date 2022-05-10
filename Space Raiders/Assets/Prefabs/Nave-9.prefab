@@ -1495,8 +1495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb6ef18fe74529499358a207363faa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 7
-  maxHealth: 7
+  health: 3
+  maxHealth: 3
   invulnPeriod: 1.2
   blinkPeriod: 0.2
   explosion: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
@@ -1513,8 +1513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbd5bc646792284eb25e2ded16a10b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 6
-  activeSpeed: 9
+  baseSpeed: 7
+  activeSpeed: 7
   dashSpeed: 0
   dashLength: 0.2
   dashCounter: 0
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6922063626157667906, guid: 5eedca0daa4c6b044822bb59774c4a57, type: 3}
-  fireDelay: 0.1
+  fireDelay: 0.15
   shotType: 0
   oldShotType: 0
   clip: {fileID: 7816982426746788717}
