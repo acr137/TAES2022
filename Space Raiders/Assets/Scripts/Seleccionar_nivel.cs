@@ -12,6 +12,10 @@ public class Seleccionar_nivel : MonoBehaviour
     {
         SceneManager.LoadScene("nivel_1");
     }
+    public void LoadNivel2()
+    {
+        SceneManager.LoadScene("nivel_2");
+    }
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
