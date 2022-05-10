@@ -38,7 +38,7 @@ public class Nivel1 : MonoBehaviour
             Debug.Log("TD: " + timeDeath);
             
             timeDeath += Time.deltaTime;
-            if(timeDeath > 1) SceneManager.LoadScene("MainMenu");
+            if(timeDeath > 1) SceneManager.LoadScene("menu_niveles");
             return;
         }
         if (gameControler.getSeconds() == 30f && end == false)
@@ -69,7 +69,7 @@ public class Nivel1 : MonoBehaviour
 
     public void End() 
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("menu_niveles");
 
     }
 }
