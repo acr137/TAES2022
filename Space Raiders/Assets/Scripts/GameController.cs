@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
         PlayerPrefs.Save();
 
         // Hace que el tiempo pase de forma normal
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
 
         elapsedTime = 0;
     }
