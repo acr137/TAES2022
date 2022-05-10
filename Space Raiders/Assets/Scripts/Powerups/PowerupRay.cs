@@ -18,7 +18,6 @@ public class PowerupRay : MonoBehaviour
     {
         Debug.Log("Powerup cogido");
 
-        pScript.oldShotType = pScript.shotType;
         pScript.shotType = 3;
         pScript.rayPowerUp(rayPrefab,duration);
 

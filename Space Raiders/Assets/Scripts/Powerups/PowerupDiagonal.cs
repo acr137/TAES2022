@@ -15,14 +15,8 @@ public class PowerupDiagonal : MonoBehaviour
     {
         Debug.Log("Powerup cogido");
 
-        if (pScript.shotType != 3)
-        {
-            pScript.shotType = 2;
-        }
-        else
-        {
-            pScript.oldShotType = 2;
-        }
+        pScript.specialShot(2, 10f);
+
         Destroy(gameObject);
     }
 }

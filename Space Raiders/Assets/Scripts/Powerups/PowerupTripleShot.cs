@@ -15,14 +15,9 @@ public class PowerupTripleShot : MonoBehaviour
     {
         Debug.Log("Powerup cogido");
 
-        if (pScript.shotType != 3)
-        {
-            pScript.shotType = 1;
-        }
-        else
-        {
-            pScript.oldShotType = 1;
-        }
+
+        pScript.specialShot(1, 15f);
+
 
         Destroy(gameObject);
     }

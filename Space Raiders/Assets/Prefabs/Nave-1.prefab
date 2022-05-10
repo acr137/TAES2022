@@ -540,9 +540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6922063626157667906, guid: 5eedca0daa4c6b044822bb59774c4a57, type: 3}
-  fireDelay: 0.2
+  fireDelay: 0.15
   shotType: 0
-  oldShotType: 0
   clip: {fileID: 556526875754490846}
 --- !u!1001 &7885987835644957184
 PrefabInstance:
