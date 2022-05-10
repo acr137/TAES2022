@@ -1973,8 +1973,8 @@ MonoBehaviour:
   hazard: {fileID: 6205470190787990698, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
   spawnValues: {x: 8, y: 6, z: -0.1}
   hazardCount: 5
-  spawnWait: 2
-  waveWait: 1
+  spawnWait: 3
+  waveWait: 2
   naves:
   - {fileID: 689479650}
   - {fileID: 1844266528}
@@ -3330,6 +3330,14 @@ PrefabInstance:
     - target: {fileID: 6452326815210827432, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145880582818382228, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145880582818382228, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
+      propertyPath: maxHealth
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8297261674018747378, guid: 7d7c18bcf34b753448202e257931f977, type: 3}
       propertyPath: explotion
