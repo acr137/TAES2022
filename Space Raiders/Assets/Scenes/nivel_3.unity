@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 135506192}
   - component: {fileID: 135506191}
   m_Layer: 0
-  m_Name: GameManagerNivel1
+  m_Name: GameManagerNivel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,13 +154,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 135506190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aad994522fa92a4ea3086f534975071, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c5fd31615078ed42b6da13393b4a208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabAsteroid: {fileID: 4092300674536524907, guid: 03898a3775446cd4fa91b4ae27e403be, type: 3}
   narrador: {fileID: 1488624515}
   narrador2: {fileID: 1803370487}
-  gameControler: {fileID: 0}
+  narrador3: {fileID: 744546632}
+  gameControler: {fileID: 1093169746}
+  powerUp: {fileID: 2230306248903423779, guid: e420eadd3518d9e43bc955eb8463b991, type: 3}
+  powerUp2: {fileID: 3939539452365027723, guid: 8f69dc75c6e9f314981c76f2c26049ca, type: 3}
+  powerUp3: {fileID: 918865054685385908, guid: 86f78cc00778f5941a2fed8ae6079e8e, type: 3}
 --- !u!4 &135506192
 Transform:
   m_ObjectHideFlags: 0
@@ -686,7 +690,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &493472568
 GameObject:
@@ -788,7 +792,7 @@ RectTransform:
   - {fileID: 507205752}
   - {fileID: 514855110}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1053,7 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.85882354}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1165,7 +1169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6012125826516106979, guid: 301e0a7269ab51745931bde0e7893b20, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6012125826516106979, guid: 301e0a7269ab51745931bde0e7893b20, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1474,13 +1478,60 @@ RectTransform:
   m_Children:
   - {fileID: 1397478226}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &744546632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 744546634}
+  - component: {fileID: 744546633}
+  m_Layer: 0
+  m_Name: Narrador3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &744546633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744546632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f1ec6317f4e8d04a9b2d0ddb95f5ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Narrador
+    sentences:
+    - "\xA1Bien hecho!"
+--- !u!4 &744546634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744546632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2548931, y: 0.11250122, z: 1298.6674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793315888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,7 +1614,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &793315892
 AudioSource:
@@ -1919,10 +1970,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e67628715a7a4478bfb17d4860ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazard: {fileID: 4092300674536524907, guid: 03898a3775446cd4fa91b4ae27e403be, type: 3}
+  hazard: {fileID: 6205470190787990698, guid: 81380a0360cf1c34980c97f2bbdcf7a0, type: 3}
   spawnValues: {x: 8, y: 6, z: -0.1}
   hazardCount: 5
-  spawnWait: 0.5
+  spawnWait: 2
   waveWait: 1
   naves:
   - {fileID: 689479650}
@@ -2236,7 +2287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5411934687087411050, guid: 29bd66b715d938442a5e4bdee502d492, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5411934687087411050, guid: 29bd66b715d938442a5e4bdee502d492, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2389,7 +2440,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1379335149
 GameObject:
@@ -2420,7 +2471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1379335151
 MonoBehaviour:
@@ -2546,11 +2597,8 @@ MonoBehaviour:
   dialogue:
     name: Narrador
     sentences:
-    - "\xA1Bienvenido a Space Raiders! "
-    - Muevete con las flechas del teclado o wasd, esquiva con la barra espaciadora
-      y dispara con shift.
-    - "Tu objetivo es aguantar el mayor tiempo posible. Deber\xE1s aguantar 30 segundos
-      para pasar la tormenta de asteroides."
+    - "No todos los ovnis son iguales. \xA1Esquiva los proyectiles con la barra espaciadora!"
+    - "\xA1Aguanta sin disparar hasta que lleguen los power-ups!"
 --- !u!4 &1488624517
 Transform:
   m_ObjectHideFlags: 0
@@ -2865,7 +2913,7 @@ MonoBehaviour:
   dialogue:
     name: Narrador
     sentences:
-    - "\xA1Lo has condeguido!"
+    - "\xA1Ahora, acaba con el enemigo!"
 --- !u!4 &1803370489
 Transform:
   m_ObjectHideFlags: 0

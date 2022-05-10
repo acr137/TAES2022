@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Nivel2 : MonoBehaviour
+public class Nivel3 : MonoBehaviour
 {
     public GameObject prefabAsteroid;
     public GameObject narrador;
@@ -11,6 +11,8 @@ public class Nivel2 : MonoBehaviour
     public GameObject narrador3;
     public GameController gameControler;
     public GameObject powerUp;
+    public GameObject powerUp2;
+    public GameObject powerUp3;
     private GameObject player;
     private bool end = false;
     private bool fase2 = false;
@@ -22,6 +24,9 @@ public class Nivel2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        powerUp.GetComponent<FloatPowerup>().enabled = false;
+        powerUp2.GetComponent<FloatPowerup>().enabled = false;
+        powerUp3.GetComponent<FloatPowerup>().enabled = false;
         player = GameObject.Find("Frigate1");
         player.GetComponent<PlayerShoot>().enabled = false;
         gameControler = FindObjectOfType<GameController>();
@@ -45,20 +50,22 @@ public class Nivel2 : MonoBehaviour
             Debug.Log("TD: " + timeDeath);
 
             timeDeath += Time.deltaTime;
-            if (timeDeath > 1) SceneManager.LoadScene("menu_niveles");
+            if (timeDeath > 1) SceneManager.LoadScene("MainMenu");
             return;
         }
-        if (gameControler.getSeconds() == 15f && fase2==false)
+        if (gameControler.getSeconds() == 15f && fase2 == false)
         {
 
             fase2 = true;
             Debug.Log("Fase 2");
             DialogueTrigger dialogoNarrador2 = narrador2.GetComponent<DialogueTrigger>();
             dialogoNarrador2.TriggerDialogue();
-            Instantiate(powerUp, player.transform.position + new Vector3(0,3,0), transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+            Instantiate(powerUp,  new Vector3(0, -2, 0), transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+            Instantiate(powerUp2, new Vector3(3, -4, 0), transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+            Instantiate(powerUp3, new Vector3(-3, -4, 0), transform.rotation * Quaternion.Euler(0f, 180f, 0f));
             player.GetComponent<PlayerShoot>().enabled = true;
         }
-        if (fase2 == true  && end == false && !GameObject.Find("Enemy UFO(Clone)"))
+        if (fase2 == true && end == false && !GameObject.Find("Enemy UFO 2(Clone)"))
         {
 
             end = true;
@@ -99,5 +106,9 @@ public class Nivel2 : MonoBehaviour
         Instantiate(prefabAsteroid, new Vector2(x, y), prefabAsteroid.transform.rotation);
     }
 
-   
+    public void End()
+    {
+        SceneManager.LoadScene("MainMenu");
+
+    }
 }
