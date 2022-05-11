@@ -42,8 +42,8 @@ public class PlayerMovement : MonoBehaviour
         dashSpeed = baseSpeed * 2.5f;
         //Obtencion de valores para el control de los bordes
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        shipWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x/2;
-        shipHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y/2;
+        shipWidth = transform.GetComponent<PolygonCollider2D>().bounds.size.x/2;
+        shipHeight = transform.GetComponent<PolygonCollider2D>().bounds.size.y/2;
     }
 
     // Update is called once per frame
