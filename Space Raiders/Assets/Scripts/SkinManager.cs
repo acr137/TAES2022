@@ -86,4 +86,16 @@ public class SkinManager : MonoBehaviour
 
         SceneManager.LoadScene("nivel_infinito");
     }
+
+    // EASTER EGG
+    public void PlayNanoGame()
+    {
+        clip.Play();
+
+        PlayerPrefs.SetString("ship", "Nanonave");
+        PlayerPrefs.SetInt("posicion", 10);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene("nivel_infinito");
+    }
 }
