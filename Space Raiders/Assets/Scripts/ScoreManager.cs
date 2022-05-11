@@ -89,6 +89,9 @@ public class ScoreManager : MonoBehaviour
             bestScoreText.text = test + "Best Score: " + bestScore.ToString();
             PlayerPrefs.SetInt("bestScoreStage" + gameStage.ToString(), bestScore);
         }
+
+        PlayerPrefs.SetInt("score", score);
+        PlayerPrefs.Save();
     }
 
     /* Update is called once per frame

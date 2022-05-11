@@ -15,6 +15,7 @@ public class InfiniteGameController : MonoBehaviour
     private float minutes, seconds;
     private bool changingDifficulty = false;
     private bool enemyGenerated = false;
+    private bool saldoCalculado = false;
 
     // Propiedades p�blicas
     public GameObject[] hazards;
@@ -47,6 +48,7 @@ public class InfiniteGameController : MonoBehaviour
 
     private void Awake()
     {
+        //PlayerPrefs.DeleteAll();
         // Inicializa la difficultad
         PlayerPrefs.SetInt("difficulty", 1);
         PlayerPrefs.Save();
@@ -148,8 +150,25 @@ public class InfiniteGameController : MonoBehaviour
     // Activa la pantalla de Game Over
     private void GameOver()
     {
-        gameOverPanel?.SetActive(true);
+        gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
+        if (!saldoCalculado)
+        {
+            IncrementarSaldo();
+            saldoCalculado = true;
+        }
+    }
+
+    private void IncrementarSaldo()
+    {
+        float saldo = PlayerPrefs.GetFloat("saldo");
+        //Debug.LogWarning("Saldo : " + saldo);
+        int incremento = PlayerPrefs.GetInt("score") / 100;
+        //Debug.LogWarning("Inc: " + incremento);
+        saldo += incremento;
+        //Debug.LogWarning("Saldo 2 : " + saldo);
+        PlayerPrefs.SetFloat("saldo", saldo);
+        PlayerPrefs.Save();
     }
 
     public void Restart()
@@ -204,7 +223,7 @@ public class InfiniteGameController : MonoBehaviour
             enemy = 3;
         }
 
-        Debug.Log("Ha salido el n�mero " + random + ". As� que se ha generado el enemigo " + enemy);
+        //Debug.Log("Ha salido el n�mero " + random + ". Así que se ha generado el enemigo " + enemy);
 
         Instantiate(hazards[enemy], spawnPosition, Quaternion.identity);
     }
