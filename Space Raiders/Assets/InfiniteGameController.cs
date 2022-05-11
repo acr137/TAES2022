@@ -7,7 +7,7 @@ public class InfiniteGameController : MonoBehaviour
 {
     // Constantes globales
     private readonly int DIFFICULTY_INCREASE_PERIOD = 30/*segundos*/;
-    private readonly int GENERATION_TIME = 10/*segundos*/;
+    private readonly int GENERATION_TIME = 5/*segundos*/;
 
     // Propiedades privadas
     private int difficulty;
@@ -16,7 +16,7 @@ public class InfiniteGameController : MonoBehaviour
     private bool changingDifficulty = false;
     private bool enemyGenerated = false;
 
-    // Propiedades públicas
+    // Propiedades pï¿½blicas
     public GameObject[] hazards;
     public Vector3 spawnValues;
     public int hazardCount;
@@ -53,7 +53,7 @@ public class InfiniteGameController : MonoBehaviour
         difficulty = PlayerPrefs.GetInt("difficulty");
         Debug.Log("Nivel de dificultad: " + difficulty);
 
-        // Inicia la generación de enemigos
+        // Inicia la generaciï¿½n de enemigos
         StartCoroutine(SpawnWaves());
 
         //GameObject prefabPlayer= Resources.Load("Prefabs/" + PlayerPrefs.GetString("ship")) as GameObject;
@@ -122,7 +122,7 @@ public class InfiniteGameController : MonoBehaviour
         Time.timeScale = 1f;
         estadoPausa = false;
 
-        // Deja de mostrar el mensaje de Game Over si está activo
+        // Deja de mostrar el mensaje de Game Over si estï¿½ activo
         gameOverPanel.SetActive(false);
     }
 
@@ -204,7 +204,7 @@ public class InfiniteGameController : MonoBehaviour
             enemy = 3;
         }
 
-        Debug.Log("Ha salido el número " + random + ". Así que se ha generado el enemigo " + enemy);
+        Debug.Log("Ha salido el nï¿½mero " + random + ". Asï¿½ que se ha generado el enemigo " + enemy);
 
         Instantiate(hazards[enemy], spawnPosition, Quaternion.identity);
     }
