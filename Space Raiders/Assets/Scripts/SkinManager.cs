@@ -46,7 +46,7 @@ public class SkinManager : MonoBehaviour
         do
         {
             selectedSkin = selectedSkin + 1;
-            if (selectedSkin >= skins.Count)
+            if (selectedSkin >= skins.Count - 1)
             {
                 selectedSkin = 0;
             }
@@ -64,7 +64,7 @@ public class SkinManager : MonoBehaviour
             selectedSkin = selectedSkin - 1;
             if (selectedSkin < 0)
             {
-                selectedSkin = skins.Count - 1;
+                selectedSkin = skins.Count - 2;
             }
         } while (itemsStatus[selectedSkin]);
 
