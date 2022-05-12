@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
         LoadData();
         saldoField.text = "Saldo: " + saldoFloat + "€";
     }
